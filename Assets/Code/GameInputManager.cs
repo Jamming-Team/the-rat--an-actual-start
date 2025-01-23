@@ -10,16 +10,25 @@ public class GameInputManager : MonoBehaviour
     {
         public Action<bool> grab;
         public Action<Vector2> move;
-        public Action<bool> sprint;
-        public Action jump;
+        public Action sprint;
         public Action interact;
         public Action<Vector2> look;
+        
+        private void OnGrab(InputValue value)
+        {
+        
+        }
+
+        public void FireAction<T>(T value)
+        {
+            
+        }
     }
     
     public class Vehicle
     {
         public Action<Vector2> move;
-        public Action<bool> nitro;
+        public Action nitro;
         public Action interact;
         public Action<Vector2> look;
     }
@@ -74,4 +83,6 @@ public class GameInputManager : MonoBehaviour
 
         Debug.Log("fghhgfhgf");
     }
+
+
 }
