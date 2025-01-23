@@ -13,8 +13,9 @@ public static class GC
 
         public enum InputMaps
         {
+            None,
             Player,
-            Car
+            Vehicle
         }
         
         public static class Input

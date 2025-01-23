@@ -13,16 +13,6 @@ public class GameInputManager : MonoBehaviour
         public Action sprint;
         public Action interact;
         public Action<Vector2> look;
-        
-        private void OnGrab(InputValue value)
-        {
-        
-        }
-
-        public void FireAction<T>(T value)
-        {
-            
-        }
     }
     
     public class Vehicle
@@ -32,18 +22,39 @@ public class GameInputManager : MonoBehaviour
         public Action interact;
         public Action<Vector2> look;
     }
+
+    [SerializeField] private GameObject _statesRoot;
     
-    // private PlayerInput _playerInput;
-    private InputSystem_Actions _inputSystem;
+    [HideInInspector]
+    public Player player = new Player();
+    [HideInInspector]
+    public Vehicle vehicle = new Vehicle();
     
-    // private PlayerControls _playerControls;
+    private StateMachine<GC.States.InputMaps, GameInputManager> _stateMachine;
+
+
+    public void Init()
+    {
+        _stateMachine = new StateMachine<GC.States.InputMaps, GameInputManager>();
+        _stateMachine.Init(this, _statesRoot);
+    }
+
+    public void DeInit()
+    {
+        _stateMachine.DeInit();
+    }
+
+    public void ChangeState(GC.States.InputMaps newState)
+    {
+        _stateMachine.ChangeState(newState);
+    }
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
         // _playerInput = GetComponent<PlayerInput>();
         
-        _inputSystem = new InputSystem_Actions();
+        // _inputSystem = new InputSystem_Actions();
         
         Activate();
 
@@ -54,35 +65,20 @@ public class GameInputManager : MonoBehaviour
         // _inputSystem.Enable();
         // _inputSystem.Player.Disable();
         // _playerInput.actions.FindActionMap("dfgfgd").Enable();
-        _inputSystem.Player.Attack.performed += AttackOnperformed;
-        _inputSystem.Actual.A.performed += AttackOnperformed;
+        // _inputSystem.Player.Attack.performed += AttackOnperformed;
+        // _inputSystem.Actual.A.performed += AttackOnperformed;
 
-        void AttackOnperformed(InputAction.CallbackContext obj)
-        {
-            Debug.Log("dfgfghgfdhghf");
-        }
+        // void AttackOnperformed(InputAction.CallbackContext obj)
+        // {
+        //     Debug.Log("dfgfghgfdhghf");
+        // }
         
         // _inputSystem.Player.Move.
         
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
+        
         
     }
 
-    private void OnAttack(InputValue value)
-    {
-        Debug.Log(value.isPressed);
-        Debug.Log("dfgfghgfdhghf");
-    }
-    
-    private void OnA()
-    {
-
-        Debug.Log("fghhgfhgf");
-    }
 
 
 }

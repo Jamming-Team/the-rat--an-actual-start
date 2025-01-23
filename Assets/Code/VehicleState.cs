@@ -1,18 +1,18 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerState : StateBase<GC.States.InputMaps, GameInputManager>
+public class VehicleState : StateBase<GC.States.InputMaps, GameInputManager>
 {
     
     public override void Init(GameInputManager context)
     {
         base.Init(context);
-        stateName = GC.States.InputMaps.Player;
+        stateName = GC.States.InputMaps.Vehicle;
     }
 
     private void OnInteract()
     {
-        _context.player.interact?.Invoke();
+        _context.vehicle.interact?.Invoke();
     }
     
 }

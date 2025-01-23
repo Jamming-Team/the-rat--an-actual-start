@@ -13,11 +13,13 @@ public abstract class StateBase<T_StateType, T_ContextType> : MonoBehaviour
 
     public virtual void Init(T_ContextType context)
     {
+        Debug.Log($"It's me, {this.GetType()}, and I am initialized");
         _context = context;
     }
 
     public virtual void Enter()
     {
+        Debug.Log($"It's me, {this.GetType()}, and I am being entered");
         gameObject.SetActive(true);
         OnEnter();
     }
@@ -28,9 +30,9 @@ public abstract class StateBase<T_StateType, T_ContextType> : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    protected abstract void OnEnter();
+    protected virtual void OnEnter() {}
 
-    protected abstract void OnExit();
+    protected virtual void OnExit() {}
 
     public void RequestTransition(T_StateType nextState)
     {
