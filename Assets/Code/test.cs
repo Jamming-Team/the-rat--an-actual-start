@@ -16,6 +16,6 @@ public class test : MonoBehaviour
     void Update()
     {
         Debug.Log("b");
-        Debug.Log("a");
+        Debug.Log("b");
     }
 }
