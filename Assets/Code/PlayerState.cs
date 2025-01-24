@@ -1,18 +1,23 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerState : StateBase<GC.States.InputMaps, GameInputManager>
+namespace Rat
 {
-    
-    public override void Init(GameInputManager context)
+
+    public class PlayerState : StateBase<GC.States.InputMaps, GameInputManager>
     {
-        base.Init(context);
-        stateName = GC.States.InputMaps.Player;
+
+        public override void Init(GameInputManager context)
+        {
+            base.Init(context);
+            stateName = GC.States.InputMaps.Player;
+        }
+
+        private void OnInteract()
+        {
+            _context.player.interact?.Invoke();
+        }
+
     }
 
-    private void OnInteract()
-    {
-        _context.player.interact?.Invoke();
-    }
-    
 }

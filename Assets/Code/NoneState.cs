@@ -1,13 +1,18 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class NoneState : StateBase<GC.States.InputMaps, GameInputManager>
+namespace Rat
 {
-    
-    public override void Init(GameInputManager context)
+
+    public class NoneState : StateBase<GC.States.InputMaps, GameInputManager>
     {
-        base.Init(context);
-        stateName = GC.States.InputMaps.None;
+
+        public override void Init(GameInputManager context)
+        {
+            base.Init(context);
+            stateName = GC.States.InputMaps.None;
+        }
+
     }
-    
+
 }

@@ -148,7 +148,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25a50abb72f14525b6a9bbc910c60dbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AutoUnparentOnAwake: 1
+  _autoUnparentOnAwake: 1
+  _autoMakeDDOLOnAwake: 0
   initialPlaylist:
   - {fileID: 8300000, guid: b3ef537cb15cee756a42fbeb887cc0db, type: 3}
   - {fileID: 8300000, guid: 99bbb501b0aa822cba598fa55eac7535, type: 3}
@@ -492,6 +493,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a3943fe67bfbcbc08887269797f24f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _autoUnparentOnAwake: 1
+  _autoMakeDDOLOnAwake: 0
   _statesRoot: {fileID: 1406183661}
 --- !u!4 &1253596566
 Transform:
@@ -888,7 +891,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d74468ac80064ad084ad4d83c2e49cc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AutoUnparentOnAwake: 1
+  _autoUnparentOnAwake: 1
+  _autoMakeDDOLOnAwake: 0
   soundEmitterPrefab: {fileID: 4361871475895892966, guid: 8a6ce01fb8e38bfeab6a461d6c59b93b, type: 3}
   collectionCheck: 1
   defaultCapacity: 10

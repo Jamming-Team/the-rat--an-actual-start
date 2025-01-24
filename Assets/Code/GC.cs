@@ -8,7 +8,17 @@ public static class GC
     {
         public static class Game
         {
-        
+            public enum MainMenu
+            {
+                MainView,
+                SettingsView,
+            }
+            
+            public enum Gameplay
+            {
+                Action,
+                Pause,
+            }
         }
 
         public enum InputMaps
@@ -22,6 +32,13 @@ public static class GC
         {
             
         }
+    }
+
+    public static class Scenes
+    {
+        public const string EMPTY = "Empty";
+        public const string MAIN_MENU = "MainMenu";
+        public const string GAMEPLAY = "Gameplay";
     }
     
 }

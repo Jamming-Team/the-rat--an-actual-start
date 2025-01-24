@@ -6,7 +6,6 @@ using UnityEngine.Serialization;
 
 public class StateMachine<T_StateType, T_ContextType>
     {
-        [FormerlySerializedAs("m_states")] [SerializeField]
         private  List<StateBase<T_StateType, T_ContextType>> _statesList = new();
         private StateBase<T_StateType, T_ContextType> _currentState;
         public StateBase<T_StateType, T_ContextType> currentState => _currentState;
