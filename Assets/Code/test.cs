@@ -21,15 +21,15 @@ public class test : MonoBehaviour
         manager.Init();
         manager.player.interact += Interact;
         manager.vehicle.interact += InteractV;
-        Sequence.Create(1000)
-            .ChainCallback(() =>
-            {
-                SoundManager.Instance.CreateSoundBuilder()
-                    .WithPosition(this.transform.position)
-                    .WithRandomPitch()
-                    .Play(soundData);
-            })
-            .ChainDelay(0.01f);
+        // Sequence.Create(1000)
+        //     .ChainCallback(() =>
+        //     {
+        //         SoundManager.Instance.CreateSoundBuilder()
+        //             .WithPosition(this.transform.position)
+        //             .WithRandomPitch()
+        //             .Play(soundData);
+        //     })
+        //     .ChainDelay(0.01f);
     }
     
 
@@ -44,6 +44,7 @@ public class test : MonoBehaviour
 
     private void Interact()
     {
+        MusicManager.Instance.PlayNextTrack();
         Debug.Log($"Interact Player: ");
     }
 
