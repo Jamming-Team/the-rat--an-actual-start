@@ -18,8 +18,10 @@ namespace Rat
         
         public static T Instance {
             get {
-                if (instance == null) {
-                    Debug.LogError($"Instance of {typeof(T)} not found");
+                if (instance == null)
+                {
+                    return null; 
+                    // Debug.LogError($"Instance of {typeof(T)} not found");
                     // instance = FindAnyObjectByType<T>();
                     // if (instance == null) {
                     //     var go = new GameObject(typeof(T).Name + " Auto-Generated");

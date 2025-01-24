@@ -27,6 +27,7 @@ namespace Rat
         {
             _views?.ForEach(x =>
             {
+                Debug.Log(x.gameObject.name);
                 if (x)
                     x.SetActive(visibility);
             });

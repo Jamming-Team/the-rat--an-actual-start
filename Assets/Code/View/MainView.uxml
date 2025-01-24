@@ -3,9 +3,9 @@
     <engine:VisualElement name="Panel" class="main-menu-vertical-divider main-panel-background">
         <engine:VisualElement name="MainViewContainer" class="main-menu-left-container">
             <engine:VisualElement style="flex-grow: 1; width: 65%; justify-content: center;">
-                <engine:Button text="LEVEL SELECTION" />
-                <engine:Button text="HOW TO PLAY" />
-                <engine:Button text="SETTINGS" />
+                <engine:Button text="LEVEL SELECTION" name="LevelSelectionButton" />
+                <engine:Button text="HOW TO PLAY" name="HowToPlayButton" />
+                <engine:Button text="SETTINGS" name="SettingsButton" />
             </engine:VisualElement>
         </engine:VisualElement>
         <engine:VisualElement name="RightContainer" style="flex-grow: 1;" />

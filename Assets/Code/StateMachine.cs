@@ -44,12 +44,17 @@ public class StateMachine<T_StateType, T_ContextType>
 
         public void ChangeState(T_StateType newState)
         {
+            
+            
             var nextState = _statesList.Find(x =>
             {
+                Debug.Log($"{x.stateName} - {newState}");
+
                 return Equals(x.stateName, newState);
             });
             
             // Debug.Log(nextState);
+
             
             // Debug.Log(!Equals(m_currentState, nextState));
             

@@ -4,9 +4,9 @@ namespace Rat
 {
     public abstract class GameModeControllerBase<T_StateType, T_ContextType> : PersistentSingleton<GameModeControllerBase<T_StateType, T_ContextType>>
     {
-        [SerializeField] private GameObject _statesRoot;
+        [SerializeField] protected GameObject _statesRoot;
         
-        private StateMachine<T_StateType, T_ContextType> _stateMachine;
+        protected StateMachine<T_StateType, T_ContextType> _stateMachine;
 
         private void Awake()
         {
