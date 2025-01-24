@@ -3,15 +3,11 @@
     <engine:VisualElement name="Panel" class="main-menu-vertical-divider main-panel-background">
         <engine:VisualElement name="MainViewContainer" class="main-menu-left-container">
             <engine:VisualElement style="flex-grow: 1; width: 65%; justify-content: center;">
-                <engine:Button text="Button" />
-                <engine:Button text="Button" />
-                <engine:Button text="Button" />
+                <engine:Button text="LEVEL SELECTION" />
+                <engine:Button text="HOW TO PLAY" />
+                <engine:Button text="SETTINGS" />
             </engine:VisualElement>
         </engine:VisualElement>
-        <engine:VisualElement name="RightContainer" style="flex-grow: 1;">
-            <engine:VisualElement name="TitleView" enabled="true" style="flex-grow: 1; padding-top: 14%; padding-right: 14%; padding-bottom: 14%; padding-left: 14%;">
-                <engine:VisualElement class="image" style="flex-grow: 1;" />
-            </engine:VisualElement>
-        </engine:VisualElement>
+        <engine:VisualElement name="RightContainer" style="flex-grow: 1;" />
     </engine:VisualElement>
 </engine:UXML>
