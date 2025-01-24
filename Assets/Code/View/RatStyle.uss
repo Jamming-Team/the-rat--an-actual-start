@@ -1,0 +1,30 @@
+.main-panel-background {
+    background-color: rgb(85, 127, 153);
+}
+
+.unity-button {
+    margin-top: 27px;
+}
+
+.image {
+    background-image: url("project://database/Assets/Art/podarok-2-mashina.png?fileID=2800000&guid=eebb99cacbe73fa2d815ee39e467038b&type=3#podarok-2-mashina");
+}
+
+.main-menu-vertical-divider {
+    flex-direction: row;
+    flex-grow: 1;
+}
+
+.main-menu-left-container {
+    flex-grow: 1;
+    max-width: 35%;
+    align-items: center;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+.main-panel-background {
+    background-color: rgb(85, 127, 153);
+}

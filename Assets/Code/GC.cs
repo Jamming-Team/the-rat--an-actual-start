@@ -10,14 +10,16 @@ public static class GC
         {
             public enum MainMenu
             {
-                MainView,
-                SettingsView,
+                Main,
+                Settings,
+                LevelSelection,
             }
             
             public enum Gameplay
             {
                 Action,
                 Pause,
+                PostGame,
             }
         }
 
