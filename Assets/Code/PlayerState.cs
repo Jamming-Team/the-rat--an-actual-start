@@ -17,6 +17,21 @@ namespace Rat
         {
             _context.player.interact?.Invoke();
         }
+        
+        private void OnJump()
+        {
+            _context.player.jump?.Invoke();
+        }
+        
+        private void OnLook(InputValue value)
+        {
+            _context.player.look?.Invoke(value.Get<Vector2>());
+        }
+        
+        private void OnMove(InputValue value)
+        {
+            _context.player.move?.Invoke(value.Get<float>());
+        }
 
     }
 

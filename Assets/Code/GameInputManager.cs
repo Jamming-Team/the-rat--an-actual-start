@@ -9,9 +9,8 @@ namespace Rat
 
         public class Player
         {
-            public Action<bool> grab;
-            public Action<Vector2> move;
-            public Action sprint;
+            public Action<float> move;
+            public Action jump;
             public Action interact;
             public Action<Vector2> look;
         }
@@ -49,14 +48,16 @@ namespace Rat
         }
 
         // Start is called once before the first execution of Update after the MonoBehaviour is created
-        void Awake()
+        protected override void Awake()
         {
+            base.Awake();
             // _playerInput = GetComponent<PlayerInput>();
 
             // _inputSystem = new InputSystem_Actions();
 
             Activate();
-
+            Init();
+            ChangeState(GC.States.InputMaps.Player);
         }
 
         public void Activate()

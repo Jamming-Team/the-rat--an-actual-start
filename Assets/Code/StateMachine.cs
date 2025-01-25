@@ -22,15 +22,18 @@ public class StateMachine<T_StateType, T_ContextType>
 
         public void Init(T_ContextType context, GameObject statesRoot)
         {
+            Debug.Log(statesRoot.name);
             statesRoot.GetComponentsInChildren(_statesList);
+            Debug.Log(_statesList.Count); 
             _statesList.ForEach(x =>
             {
                 x.Init(context);
                 x.OnTransitionRequired += ChangeState;
                 x.gameObject.SetActive(false);
-                // Debug.Log(x.GetType());
+                Debug.Log(x.GetType());
             });
             // m_currentState = m_states[0];
+            
             ChangeState(_statesList[0].stateName);
         }
 

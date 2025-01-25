@@ -8,8 +8,9 @@ namespace Rat
         
         protected StateMachine<T_StateType, T_ContextType> _stateMachine;
 
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
 #if UNITY_EDITOR
             if (GameManager.Instance == null)
             {
