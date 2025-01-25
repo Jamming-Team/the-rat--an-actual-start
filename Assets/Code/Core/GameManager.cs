@@ -30,6 +30,7 @@ namespace Rat
 
         protected override void Awake()
         {
+            Debug.Log("Game Manager Awake");
             base.Awake();
 #if UNITY_EDITOR
             setCurrentLevel(initialLevelIndex);
@@ -44,19 +45,33 @@ namespace Rat
 #endif
         }
         
+        private bool _isLoading = false;
+        
         public void LoadScene(string sceneName)
         {
+            if (_isLoading)
+                return;
+            
+            // StopCoroutine(LoadSceneAsync(sceneName));
+            Debug.Log($"LoadSceneCount: {SceneManager.loadedSceneCount}");
+            _isLoading = true; 
+            // SceneManager.LoadScene(sceneName);
+            
             StartCoroutine(LoadSceneAsync(sceneName));
         }
         
         private IEnumerator LoadSceneAsync(string sceneName)
         {
+            // System.GC.Collect();
+            // Resources.UnloadUnusedAssets();
             yield return SceneManager.LoadSceneAsync(GC.Scenes.EMPTY);
             System.GC.Collect();
             Resources.UnloadUnusedAssets();
             
             yield return SceneManager.LoadSceneAsync(sceneName);
 
+            _isLoading = false;
+            
             // yield return new WaitForSecondsRealtime(1f);
             
 
