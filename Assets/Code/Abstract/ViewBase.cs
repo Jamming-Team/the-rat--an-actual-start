@@ -5,11 +5,11 @@ namespace Rat
 {
     public abstract class ViewBase : MonoBehaviour
     {
-        protected VisualElement m_view;
+        // protected VisualElement m_view;
         
         protected virtual void OnEnable()
         {
-            m_view = GetComponent<UIDocument>().rootVisualElement;
+            // m_view = GetComponent<UIDocument>().rootVisualElement;
         }
     }
 }

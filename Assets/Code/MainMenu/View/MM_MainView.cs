@@ -1,34 +1,32 @@
 using System;
 using UnityEngine;
-using UnityEngine.UIElements;
+// using UnityEngine.UIElements;
+using UnityEngine.UI;
 
 namespace Rat
 {
     public class MM_MainView : ViewBase
     {
+        [SerializeField]
         private Button _levelSelectionButton;
-        private Button _howToPlayButton;
+        [SerializeField]
         private Button _settingsButton;
 
 
         protected override void OnEnable()
         {
             base.OnEnable();
+            _levelSelectionButton.onClick.AddListener(LevelSelectionButtonOnclicked); 
+            _settingsButton.onClick.AddListener(SettingsButtonOnclicked);
+            Debug.Log("Enabled");
 
-            _levelSelectionButton = m_view.Query<Button>(GC.Views.MainMenu.LEVEL_SELECTION_BUTTON);
-            _howToPlayButton = m_view.Query<Button>(GC.Views.MainMenu.HOW_TO_PLAY_BUTTON);
-            _settingsButton = m_view.Query<Button>(GC.Views.MainMenu.SETTINGS_BUTTON);
-            
-            _levelSelectionButton.clicked += LevelSelectionButtonOnclicked; 
-            _howToPlayButton.clicked += HowToPlayButtonOnclicked;
-            _settingsButton.clicked += SettingsButtonOnclicked;
+
         }
         
         private void OnDisable()
         {
-            _levelSelectionButton.clicked -= LevelSelectionButtonOnclicked; 
-            _howToPlayButton.clicked -= HowToPlayButtonOnclicked;
-            _settingsButton.clicked -= SettingsButtonOnclicked;
+            _levelSelectionButton.onClick.RemoveListener(LevelSelectionButtonOnclicked); 
+            _settingsButton.onClick.RemoveListener(SettingsButtonOnclicked);
         }
 
         private void LevelSelectionButtonOnclicked()
@@ -42,9 +40,9 @@ namespace Rat
             GameEventsView.MainMenu.OnPressHowToPlay?.Invoke();
         }
         
-        private void SettingsButtonOnclicked()
+        public void SettingsButtonOnclicked()
         {
-            Debug.Log("Credits clicked");
+            // Debug.Log("Credits clicked");
             GameEventsView.MainMenu.OnPressSettings?.Invoke();
         }
     }

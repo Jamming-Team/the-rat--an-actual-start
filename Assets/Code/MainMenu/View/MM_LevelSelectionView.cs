@@ -1,25 +1,23 @@
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
 
 namespace Rat
 {
     public class MM_LevelSelectionView : ViewBase
     {
-        
+        [SerializeField]
         private Button _playButton;
 
         protected override void OnEnable()
         {
             base.OnEnable();
 
-            _playButton = m_view.Query<Button>(GC.Views.MainMenu.PLAY_BUTTON);
-            
-            _playButton.clicked += PlayButtonOnclicked; 
+            // _playButton.onClick.AddListener(PlayButtonOnclicked); 
         }
         
         private void OnDisable()
         {
-            _playButton.clicked += PlayButtonOnclicked; 
+            // _playButton.onClick.RemoveListener(PlayButtonOnclicked); 
         }
 
         private void PlayButtonOnclicked()
