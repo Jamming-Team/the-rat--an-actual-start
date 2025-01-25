@@ -8,6 +8,8 @@ namespace Rat
         
         protected StateMachine<T_StateType, T_ContextType> _stateMachine;
 
+        public int currentScore { get; } = 0;
+        
         protected override void Awake()
         {
             base.Awake();

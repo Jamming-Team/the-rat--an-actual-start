@@ -14,18 +14,26 @@ namespace Rat
         protected override void OnEnter()
         {
             base.OnEnter();
-            GameEventsView.MainMenu.OnPressPlay += OnPressPlay;
+            GameEventsView.MainMenu.OnPressBackButton += OnPressBack;
+            GameEventsView.MainMenu.OnPressLevelButton += OnPressLevelButton;
         }
-        
+
         protected override void OnExit()
         {
             base.OnExit();
-            GameEventsView.MainMenu.OnPressPlay -= OnPressPlay;
+            GameEventsView.MainMenu.OnPressBackButton -= OnPressBack;
+            GameEventsView.MainMenu.OnPressLevelButton -= OnPressLevelButton;
+        }
+        
+        private void OnPressLevelButton(int obj)
+        {
+            GameManager.Instance.setCurrentLevel(obj);
+            GameManager.Instance.LoadScene(GC.Scenes.GAMEPLAY);
         }
 
-        private void OnPressPlay()
+        private void OnPressBack()
         {
-            Debug.Log("OnPressPlay");
+            RequestTransition(GC.States.Game.MainMenu.Main);
         }
     }
 }

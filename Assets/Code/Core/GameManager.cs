@@ -12,12 +12,15 @@ namespace Rat
         [SerializeField] private int initialLevelIndex = 0;
         [SerializeField] private GameLevelsSO _gameLevelsSO;
         public GameLevelsSO gameLevelsSO => _gameLevelsSO;
+        public GameLevelData currentLevelData => _gameLevelsSO.levels[_currentLevelIndex];
+        private int _currentLevelIndex;
         
         public static GameObject currentLevelPrefab { get; private set; }
 
         public void setCurrentLevel(int levelIndex)
         {
             currentLevelPrefab = _gameLevelsSO.levels[levelIndex].level;
+            _currentLevelIndex = levelIndex;
         }
         
         public void SetGameTimeScale(float scale)
@@ -70,6 +73,11 @@ namespace Rat
             // var gameModeController = GameModeControllerBase.Instance;
             // m_currentCamera = gameModeController.m_camera;
             // gameModeController.Initialize();
+        }
+
+        public void SaveScore(int score)
+        {
+            _gameLevelsSO.levels[_currentLevelIndex].playerScore = score;
         }
         
     }

@@ -17,3 +17,11 @@ MonoBehaviour:
     playerScore: 0
     maxScore: 0
     level: {fileID: 4114050498690548901, guid: a9b356017bb50419ea297754d6d31a45, type: 3}
+  - name: Level TWO
+    playerScore: 10
+    maxScore: 100
+    level: {fileID: 4114050498690548901, guid: 617551125367cbaf788ec522df32fc85, type: 3}
+  - name: Level fdgkjdfghkjlgfdh
+    playerScore: 10
+    maxScore: 100
+    level: {fileID: 4114050498690548901, guid: a9b356017bb50419ea297754d6d31a45, type: 3}

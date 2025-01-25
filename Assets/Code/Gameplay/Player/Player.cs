@@ -6,6 +6,7 @@ namespace Rat
     {
         [SerializeField]
         private PlayerController _playerController;
+        
         [SerializeField]
         private GraphicsController _graphicsController;
         private Rigidbody2D _rigidbody;

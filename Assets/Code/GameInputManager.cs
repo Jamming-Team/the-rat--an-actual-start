@@ -13,6 +13,7 @@ namespace Rat
             public Action jump;
             public Action interact;
             public Action<Vector2> look;
+            public Action pause;
         }
 
         public class Vehicle

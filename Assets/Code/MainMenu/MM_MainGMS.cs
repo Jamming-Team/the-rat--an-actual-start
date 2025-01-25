@@ -13,7 +13,7 @@ namespace Rat
         protected override void OnEnter()
         {
             base.OnEnter();
-            GameEventsView.MainMenu.OnPressHowToPlay += OnPressHowToPlay;
+            // GameEventsView.MainMenu.OnPressHowToPlay += OnPressHowToPlay;
             GameEventsView.MainMenu.OnPressLevelSelection += OnPressLevelSelection;
             GameEventsView.MainMenu.OnPressSettings += OnPressSettings;
         }
@@ -21,7 +21,7 @@ namespace Rat
         protected override void OnExit()
         {
             base.OnExit();
-            GameEventsView.MainMenu.OnPressHowToPlay -= OnPressHowToPlay;
+            // GameEventsView.MainMenu.OnPressHowToPlay -= OnPressHowToPlay;
             GameEventsView.MainMenu.OnPressLevelSelection -= OnPressLevelSelection;
             GameEventsView.MainMenu.OnPressSettings -= OnPressSettings;
         }
@@ -31,10 +31,10 @@ namespace Rat
             RequestTransition(GC.States.Game.MainMenu.LevelSelection);
         }
 
-        private void OnPressHowToPlay()
-        {
-            RequestTransition(GC.States.Game.MainMenu.HowToPlay);
-        }
+        // private void OnPressHowToPlay()
+        // {
+        //     RequestTransition(GC.States.Game.MainMenu.HowToPlay);
+        // }
         
         private void OnPressSettings()
         {

@@ -8,8 +8,11 @@ namespace Rat
         // private MovementComponent _movementComponent;
         //
         
-        private GameLevel _currentGameLevel;
         
+        public GameLevel _currentGameLevel;
+
+
+
         public override void Initialize()
         {
             base.Initialize();
@@ -19,6 +22,11 @@ namespace Rat
 
             _currentGameLevel = Instantiate(GameManager.currentLevelPrefab).GetComponent<GameLevel>();
             _currentGameLevel.InitLevel();
+        }
+
+        public void Test()
+        {
+            
         }
         
     }
