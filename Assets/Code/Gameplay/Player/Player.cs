@@ -19,7 +19,7 @@ namespace Rat
             _capsuleCollider = GetComponent<CapsuleCollider2D>();
             
             _playerController.isActive = true;
-            _graphicsController.Init();
+            _graphicsController.Init(_rigidbody);
             _playerController.Init(_rigidbody, _capsuleCollider);
         }
 
