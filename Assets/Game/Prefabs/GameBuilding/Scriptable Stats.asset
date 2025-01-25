@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 716d45d72dbf446c8aa70165b12e140d, type: 3}
   m_Name: Scriptable Stats
   m_EditorClassIdentifier: 
-  PlayerLayer:
+  ObstacleLayers:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 64
   SnapInput: 1
   VerticalDeadZoneThreshold: 0.3
   HorizontalDeadZoneThreshold: 0.1
@@ -26,7 +26,7 @@ MonoBehaviour:
   GrounderDistance: 0.05
   JumpPower: 25
   MaxFallSpeed: 25
-  FallAcceleration: 50
+  FallAcceleration: 25
   JumpEndEarlyGravityModifier: 3
   CoyoteTime: 0.15
   JumpBuffer: 0.2

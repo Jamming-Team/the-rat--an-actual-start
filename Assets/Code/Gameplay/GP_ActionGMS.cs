@@ -20,6 +20,12 @@ namespace Rat
             
             GameInputManager.Instance.player.overlook += Overlook;
             
+#if UNITY_EDITOR
+
+            GameInputManager.Instance.player.restart += Restart;
+            
+#endif
+            
             ManageOverlook();
         }
 
@@ -30,6 +36,12 @@ namespace Rat
             GameEventsView.Gameplay.OnPressPause -= Pause;
             
             GameInputManager.Instance.player.overlook -= Overlook;
+            
+#if UNITY_EDITOR
+
+            GameInputManager.Instance.player.restart -= Restart;
+            
+#endif
         }
         
         private void Pause()
@@ -39,7 +51,10 @@ namespace Rat
         
         private void Overlook(bool obj)
         {
-            _overlookIsPressed = obj;
+            if (obj == false)
+                return;
+            
+            _overlookIsPressed = !_overlookIsPressed;
             ManageOverlook();
             Debug.Log("Overlook");
         }
@@ -48,5 +63,14 @@ namespace Rat
         {
             GMC_Gameplay.Instance.cameraManager.SetCurrentCamera(_overlookIsPressed ? GC.Camera.CameraOverlook : GC.Camera.CameraFollow);
         }
+        
+#if UNITY_EDITOR
+        
+        private void Restart()
+        {
+            GameManager.Instance.LoadScene(GC.Scenes.GAMEPLAY);
+        }
+        
+#endif
     }
 }

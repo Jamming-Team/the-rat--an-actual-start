@@ -15,6 +15,13 @@ namespace Rat
             public Action<Vector2> look;
             public Action pause;
             public Action<bool> overlook;
+            
+#if UNITY_EDITOR
+
+            public Action restart;
+
+#endif
+
         }
 
         public class Vehicle

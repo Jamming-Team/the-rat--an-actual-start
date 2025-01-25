@@ -57,13 +57,9 @@ namespace Rat
             
             yield return SceneManager.LoadSceneAsync(sceneName);
 
-            yield return new WaitForSecondsRealtime(1f);
+            // yield return new WaitForSecondsRealtime(1f);
             
-            
-            switch (GetType())
-            {
-                
-            }
+
             
             // SceneSetup();
         }
