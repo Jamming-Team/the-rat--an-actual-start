@@ -4,6 +4,6 @@ namespace Rat.Interface
 {
     public interface IPushable
     {
-        public void ApplyForce(Vector2 force);
+        public void ApplyForce(Vector2 forceVector);
     }
 }

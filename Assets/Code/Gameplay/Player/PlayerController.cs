@@ -214,9 +214,13 @@ namespace Rat
             if (_stats == null) Debug.LogWarning("Please assign a ScriptableStats asset to the Player Controller's Stats slot", this);
         }
 #endif
-        public void ApplyForce(Vector2 force)
+        public void ApplyForce(Vector2 forceVector)
         {
-            _externalForceToApply += force;
+            var newForceVector = Vector2.Lerp(forceVector, Vector2.up, _stats.upDirRatio);
+            var finalForce = newForceVector;
+            finalForce.Scale(new Vector2(_stats.pushScaleX, _stats.pushScaleY));
+            finalForce += newForceVector * -_frameVelocity * _stats.pushBackForce;
+            _externalForceToApply += finalForce;
         }
 
         public void HandleExternalForce()

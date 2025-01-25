@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 716d45d72dbf446c8aa70165b12e140d, type: 3}
-  m_Name: New Scriptable Stats
+  m_Name: Scriptable Stats
   m_EditorClassIdentifier: 
   PlayerLayer:
     serializedVersion: 2
@@ -25,8 +25,12 @@ MonoBehaviour:
   GroundingForce: -1.5
   GrounderDistance: 0.05
   JumpPower: 25
-  MaxFallSpeed: 20
+  MaxFallSpeed: 5
   FallAcceleration: 50
   JumpEndEarlyGravityModifier: 3
   CoyoteTime: 0.15
   JumpBuffer: 0.2
+  pushScaleX: 60
+  pushScaleY: 60
+  upDirRatio: 0.803
+  pushBackForce: 5

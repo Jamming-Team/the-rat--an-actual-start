@@ -52,5 +52,15 @@ namespace Rat
 
         [Tooltip("The amount of time we buffer a jump. This allows jump input before actually hitting the ground")]
         public float JumpBuffer = .2f;
+        
+        [Header("BUBBLE JUMP")]
+        [SerializeField]
+        public float pushScaleX = 50;
+        [SerializeField]
+        public float pushScaleY = 50;
+        [SerializeField] [Range(0, 1)]
+        public float upDirRatio = 0.5f;
+        [SerializeField] [Range(0, 5f)]
+        public float pushBackForce = 1f;
     }
 }
