@@ -1,12 +1,13 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Rat
 {
     [CreateAssetMenu]
     public class ScriptableStats : ScriptableObject
     {
-        [Header("LAYERS")] [Tooltip("Set this to the layer your player is on")]
-        public LayerMask PlayerLayer;
+        [FormerlySerializedAs("PlayerLayer")] [Header("LAYERS")] [Tooltip("Set this to the layer your player is on")]
+        public LayerMask ObstacleLayers;
 
         [Header("INPUT")] [Tooltip("Makes all Input snap to an integer. Prevents gamepads from walking slowly. Recommended value is true to ensure gamepad/keybaord parity.")]
         public bool SnapInput = true;

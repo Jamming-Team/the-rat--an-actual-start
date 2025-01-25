@@ -15,11 +15,11 @@ namespace Rat
     {
         [SerializeField] private ScriptableStats _stats;
         private Rigidbody2D _rb;
-        private CapsuleCollider2D _col;
+        private CircleCollider2D _col;
         private FrameInput _frameInput;
         private Vector2 _frameVelocity;
         private bool _cachedQueryStartInColliders;
-
+        
         #region Interface
 
         public Vector2 FrameInput => _frameInput.Move;
@@ -33,7 +33,7 @@ namespace Rat
         private Vector2 _externalForceToApply = Vector2.zero;
         private bool _initialized;
 
-        public void Init(Rigidbody2D rb, CapsuleCollider2D col)
+        public void Init(Rigidbody2D rb, CircleCollider2D col)
         {
             _rb = rb;
             _col = col;
@@ -108,8 +108,8 @@ namespace Rat
             Physics2D.queriesStartInColliders = false;
 
             // Ground and Ceiling
-            bool groundHit = Physics2D.CapsuleCast(_col.bounds.center, _col.size, _col.direction, 0, Vector2.down, _stats.GrounderDistance, ~_stats.PlayerLayer);
-            bool ceilingHit = Physics2D.CapsuleCast(_col.bounds.center, _col.size, _col.direction, 0, Vector2.up, _stats.GrounderDistance, ~_stats.PlayerLayer);
+            bool groundHit = Physics2D.CircleCast(_col.bounds.center, _col.radius, Vector2.down, _stats.GrounderDistance, _stats.ObstacleLayers);
+            bool ceilingHit = Physics2D.CircleCast(_col.bounds.center, _col.radius, Vector2.up, _stats.GrounderDistance, _stats.ObstacleLayers);
 
             // Hit a Ceiling
             if (ceilingHit) _frameVelocity.y = Mathf.Min(0, _frameVelocity.y);

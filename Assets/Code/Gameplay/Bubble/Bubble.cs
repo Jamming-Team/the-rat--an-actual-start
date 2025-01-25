@@ -16,11 +16,22 @@ namespace Rat
         private LayerMask _playerLayerMask;
         // [SerializeField] [Range(0, 1)]
         // private float _upDirRatio = 0.5f;
+        private float _bumpTimer = 0f;
+        private float _bumpTimerMax = 0.1f;
 
+        private void Update()
+        {
+            _bumpTimer -= Time.deltaTime;
+        }
+        
         private void OnCollisionEnter2D(Collision2D collision)
         {
+            if (_bumpTimer > 0f)
+                return;
+            
             if (( _playerLayerMask.value & (1 << collision.gameObject.layer)) != 0)
             {
+                _bumpTimer = _bumpTimerMax;
                 var pushVector = -collision.contacts[0].normal;
                 // Debug.Log( pushVector);
                 //

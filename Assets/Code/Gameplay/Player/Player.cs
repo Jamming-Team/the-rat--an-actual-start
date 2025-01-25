@@ -10,17 +10,17 @@ namespace Rat
         [SerializeField]
         private GraphicsController _graphicsController;
         private Rigidbody2D _rigidbody;
-        private CapsuleCollider2D _capsuleCollider;
+        private CircleCollider2D _ciclreCollider;
 
 
         public void Init()
         {
             _rigidbody = GetComponent<Rigidbody2D>();
-            _capsuleCollider = GetComponent<CapsuleCollider2D>();
+            _ciclreCollider = GetComponent<CircleCollider2D>();
             
             _playerController.isActive = true;
             _graphicsController.Init(_rigidbody);
-            _playerController.Init(_rigidbody, _capsuleCollider);
+            _playerController.Init(_rigidbody, _ciclreCollider);
         }
 
         public void Deactivate()
