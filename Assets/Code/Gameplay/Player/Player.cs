@@ -26,5 +26,10 @@ namespace Rat
         {
             _playerController.isActive = false;
         }
+
+        public PlayerController GetPlayerController()
+        {
+            return _playerController;
+        }
     }
 }
