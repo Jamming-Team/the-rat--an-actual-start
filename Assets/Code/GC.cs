@@ -3,7 +3,13 @@ using UnityEngine;
 
 public static class GC
 {
-
+    
+    public enum Camera
+    {
+        CameraFollow,
+        CameraOverlook,
+    }
+    
     public static class States
     {
         public static class Game

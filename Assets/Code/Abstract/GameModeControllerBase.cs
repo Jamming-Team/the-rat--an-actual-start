@@ -5,8 +5,12 @@ namespace Rat
     public abstract class GameModeControllerBase<T_StateType, T_ContextType> : PersistentSingleton<GameModeControllerBase<T_StateType, T_ContextType>>
     {
         [SerializeField] protected GameObject _statesRoot;
+        [SerializeField] protected CameraManager _cameraManager; 
+        public CameraManager cameraManager => _cameraManager;
+        
         
         protected StateMachine<T_StateType, T_ContextType> _stateMachine;
+        
 
         public int currentScore { get; } = 0;
         

@@ -22,6 +22,7 @@ namespace Rat
 
             _currentGameLevel = Instantiate(GameManager.currentLevelPrefab).GetComponent<GameLevel>();
             _currentGameLevel.InitLevel();
+            cameraManager.Setup(_currentGameLevel.player.transform, GameManager.Instance.currentLevelData.overlookCamera);
         }
 
         public void Test()

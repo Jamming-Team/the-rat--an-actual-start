@@ -15,7 +15,16 @@ namespace Rat
         public string name;
         public int playerScore;
         public int maxScore;
-
+        public OverlookCameraData overlookCamera;
+        
         public GameObject level;
+        
+        [System.Serializable]
+        public class OverlookCameraData
+        {
+            public Vector2 position;
+            public float orthographicSize;
+        }
+        
     }
 }

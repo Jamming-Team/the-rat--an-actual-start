@@ -37,6 +37,11 @@ namespace Rat
         {
             _context.player.pause?.Invoke();
         }
+
+        private void OnOverlook(InputValue value)
+        {
+            _context.player.overlook?.Invoke(value.isPressed);
+        }
         
 
     }
