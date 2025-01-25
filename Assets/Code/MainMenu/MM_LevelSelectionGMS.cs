@@ -14,18 +14,18 @@ namespace Rat
         protected override void OnEnter()
         {
             base.OnEnter();
-            GameEventsView.MainMenu.OnPressPlay += OnPressPlay;
+            GameEventsView.MainMenu.OnPressBackButton += OnPressBack;
         }
         
         protected override void OnExit()
         {
             base.OnExit();
-            GameEventsView.MainMenu.OnPressPlay -= OnPressPlay;
+            GameEventsView.MainMenu.OnPressBackButton -= OnPressBack;
         }
 
-        private void OnPressPlay()
+        private void OnPressBack()
         {
-            Debug.Log("OnPressPlay");
+            RequestTransition(GC.States.Game.MainMenu.Main);
         }
     }
 }
