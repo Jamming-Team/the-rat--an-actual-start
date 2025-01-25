@@ -18,8 +18,12 @@ namespace Rat
         
         public static class Gameplay
         {
+            public static Action OnPressPause;
+            public static Action<int> OnScoreChanged;
+            
             public static Action OnPressContinue;
-
+            public static Action OnPressRestart;
+            public static Action OnPressToMainMenu;
         }
         
         

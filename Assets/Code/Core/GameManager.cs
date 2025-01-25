@@ -12,12 +12,15 @@ namespace Rat
         [SerializeField] private int initialLevelIndex = 0;
         [SerializeField] private GameLevelsSO _gameLevelsSO;
         public GameLevelsSO gameLevelsSO => _gameLevelsSO;
+        public GameLevelData currentLevelData => _gameLevelsSO.levels[_currentLevelIndex];
+        private int _currentLevelIndex;
         
         public static GameObject currentLevelPrefab { get; private set; }
 
         public void setCurrentLevel(int levelIndex)
         {
             currentLevelPrefab = _gameLevelsSO.levels[levelIndex].level;
+            _currentLevelIndex = levelIndex;
         }
         
         public void SetGameTimeScale(float scale)
