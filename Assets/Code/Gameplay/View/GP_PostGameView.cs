@@ -21,8 +21,9 @@ namespace Rat
         protected override void OnEnable()
         {
             base.OnEnable();
+            GameManager.Instance.SaveScore(GMC_Gameplay.Instance.currentScore);
             _levelNameLabel.text = GameManager.Instance.currentLevelData.name;
-            _scoreValueLabel.text = GMC_Gameplay.Instance.currentScore.ToString();
+            _scoreValueLabel.text = $"YOUR SCORE: {GameManager.Instance.currentLevelData.playerScore}/{GameManager.Instance.currentLevelData.maxScore}";
             // _continueButton.onClick.AddListener(ContinueButtonOnclicked); 
             _restartButton.onClick.AddListener(RestartButtonOnclicked); 
             _toMainMenuButton.onClick.AddListener(ToMainMenuButtonOnclicked); 

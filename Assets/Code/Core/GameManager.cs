@@ -74,6 +74,11 @@ namespace Rat
             // m_currentCamera = gameModeController.m_camera;
             // gameModeController.Initialize();
         }
+
+        public void SaveScore(int score)
+        {
+            _gameLevelsSO.levels[_currentLevelIndex].playerScore = score;
+        }
         
     }
 }

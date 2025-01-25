@@ -32,6 +32,12 @@ namespace Rat
         {
             _context.player.move?.Invoke(value.Get<float>());
         }
+        
+        private void OnPause()
+        {
+            _context.player.pause?.Invoke();
+        }
+        
 
     }
 
