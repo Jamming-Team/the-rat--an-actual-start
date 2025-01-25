@@ -349,6 +349,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _autoUnparentOnAwake: 1
   _autoMakeDDOLOnAwake: 1
+  _playerPrefab: {fileID: 1294590998834999435, guid: eb7300df1e35775a99534e1c5b806719, type: 3}
+  initialLevelIndex: 0
+  _gameLevelsSO: {fileID: 11400000, guid: 9b6957b2447b2faa9be30fe1e890b114, type: 2}
 --- !u!1 &8172547954598477994
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,12 +7,32 @@ namespace Rat
 {
     public class GameManager : PersistentSingleton<GameManager>
     {
+        [SerializeField] private Player _playerPrefab;
+        public Player playerPrefab => _playerPrefab;
+        [SerializeField] private int initialLevelIndex = 0;
+        [SerializeField] private GameLevelsSO _gameLevelsSO;
+        public GameLevelsSO gameLevelsSO => _gameLevelsSO;
+        
+        public static GameObject currentLevelPrefab { get; private set; }
+
+        public void setCurrentLevel(int levelIndex)
+        {
+            currentLevelPrefab = _gameLevelsSO.levels[levelIndex].level;
+        }
         
         public void SetGameTimeScale(float scale)
         {
             Time.timeScale = scale;
         }
-        
+
+        protected override void Awake()
+        {
+            base.Awake();
+#if UNITY_EDITOR
+            setCurrentLevel(initialLevelIndex);
+#endif
+        }
+
         public void QuitGame()
         {
             Application.Quit();
@@ -35,6 +55,13 @@ namespace Rat
             yield return SceneManager.LoadSceneAsync(sceneName);
 
             yield return new WaitForSecondsRealtime(1f);
+            
+            
+            switch (GetType())
+            {
+                
+            }
+            
             // SceneSetup();
         }
         
