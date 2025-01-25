@@ -1,7 +1,9 @@
+using System;
+
 namespace Rat
 {
-    public class GameEvents
+    public static class GameEvents
     {
-        
+        public static Action<int> OnCoinCollected;
     }
 }
