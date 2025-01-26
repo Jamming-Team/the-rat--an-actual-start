@@ -1,13 +1,15 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Rat
 {
     public class Bubble : MonoBehaviour
     {
+        public Action OnBubbleDestroyed;
+        
         [SerializeField]
         private bool _isDestructible = true;
-        [SerializeField]
-        private int amount;
+
         // [SerializeField]
         // private float _pushScaleX = 30;
         // [SerializeField]
@@ -18,6 +20,19 @@ namespace Rat
         // private float _upDirRatio = 0.5f;
         private float _bumpTimer = 0f;
         private float _bumpTimerMax = 0.1f;
+
+        private void Awake()
+        {
+            if (_isDestructible)
+            {
+                var data = GameManager.Instance.persistentLevelData;
+                if (data.shouldPersist && data.levelName == GameManager.Instance.currentLevelData.name)
+                {
+                    if (data.bubblesList.Contains(gameObject.name))
+                        Destroy(gameObject);
+                }
+            }
+        }
 
         private void Update()
         {
@@ -43,10 +58,8 @@ namespace Rat
                 //
                 // pushVector.Scale(new Vector2(_pushScaleX, _pushScaleY));
                 collision.gameObject.GetComponent<Player>().GetPlayerController().ApplyForce(pushVector);
-                if (amount != 0)
-                {
-                    GameEvents.OnCoinCollected?.Invoke(amount);
-                }
+
+                
                 if (_isDestructible)
                     StartAnimationAndDestroy();
             }
@@ -55,6 +68,8 @@ namespace Rat
         private void StartAnimationAndDestroy()
         {
             // TODO: start animation
+            OnBubbleDestroyed?.Invoke();
+            GameEvents.OnBubbleDestroyedPersist?.Invoke(gameObject.name);
             Destroy(gameObject);
         }
     }

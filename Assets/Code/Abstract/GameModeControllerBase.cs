@@ -12,7 +12,7 @@ namespace Rat
         protected StateMachine<T_StateType, T_ContextType> _stateMachine;
         
 
-        public int currentScore { get; } = 0;
+        public int currentScore { get; set; } = 0;
         
         protected override void Awake()
         {
@@ -41,6 +41,12 @@ namespace Rat
         {
             _stateMachine = new StateMachine<T_StateType, T_ContextType>();
             // _stateMachine.Init((T_ContextType)this, _statesRoot);
+        }
+
+        public void SetCurrentScore(int score)
+        {
+            currentScore = score;
+            GameEventsView.Gameplay.OnScoreChanged?.Invoke(currentScore);
         }
         
     }

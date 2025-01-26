@@ -15,6 +15,7 @@ namespace Rat
 
         private void OnInteract()
         {
+            Debug.Log("Interact");
             _context.player.interact?.Invoke();
         }
         

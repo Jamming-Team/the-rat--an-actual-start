@@ -1,10 +1,26 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace Rat
 {
+    public class PersistentLevelData
+    {
+        public bool shouldPersist = false;
+        public string levelName = "";
+        
+        public List<string> coinsList = new List<string>();
+        public List<string> bubblesList = new List<string>();
+        public int currentScore = 0;
+        public Vector3 checkPointPosition;
+        public string checkPointName = "";
+        
+        public List<string> coinsListTemp = new List<string>();
+        public List<string> bubblesListTemp = new List<string>(); 
+    }
+    
     public class GameManager : PersistentSingleton<GameManager>
     {
         [SerializeField] private Player _playerPrefab;
@@ -14,6 +30,8 @@ namespace Rat
         public GameLevelsSO gameLevelsSO => _gameLevelsSO;
         public GameLevelData currentLevelData => _gameLevelsSO.levels[_currentLevelIndex];
         private int _currentLevelIndex;
+
+        public PersistentLevelData persistentLevelData = new PersistentLevelData();
         
         public static GameObject currentLevelPrefab { get; private set; }
 
@@ -62,6 +80,10 @@ namespace Rat
         
         private IEnumerator LoadSceneAsync(string sceneName)
         {
+            if (sceneName == GC.Scenes.MAIN_MENU)
+            {
+                persistentLevelData = new();
+            }
             // System.GC.Collect();
             // Resources.UnloadUnusedAssets();
             yield return SceneManager.LoadSceneAsync(GC.Scenes.EMPTY);

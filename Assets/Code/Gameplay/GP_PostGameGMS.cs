@@ -5,7 +5,7 @@ namespace Rat
         public override void Init(GMC_Gameplay context)
         {
             base.Init(context);
-            stateName = GC.States.Game.Gameplay.Pause;
+            stateName = GC.States.Game.Gameplay.PostGame;
         }
         
         protected override void OnEnter()

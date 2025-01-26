@@ -116,7 +116,7 @@ namespace Rat
             _sideHit = Physics2D.CircleCast(_col.bounds.center, _col.radius, Vector2.right, _stats.GrounderDistance, _stats.ObstacleLayers)
                        || Physics2D.CircleCast(_col.bounds.center, _col.radius, Vector2.left, _stats.GrounderDistance, _stats.ObstacleLayers);
 
-            Debug.Log(_sideHit);
+            // Debug.Log(_sideHit);
             
             // Hit a Ceiling
             if (ceilingHit) _frameVelocity.y = Mathf.Min(0, _frameVelocity.y);

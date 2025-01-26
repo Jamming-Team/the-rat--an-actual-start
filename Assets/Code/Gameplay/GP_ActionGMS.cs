@@ -20,6 +20,8 @@ namespace Rat
             
             GameInputManager.Instance.player.overlook += Overlook;
             
+            GameEvents.OnEnteredFinish += OnEnteredFinish;
+            
 #if UNITY_EDITOR
 
             GameInputManager.Instance.player.restart += Restart;
@@ -36,6 +38,8 @@ namespace Rat
             GameEventsView.Gameplay.OnPressPause -= Pause;
             
             GameInputManager.Instance.player.overlook -= Overlook;
+            
+            GameEvents.OnEnteredFinish -= OnEnteredFinish;
             
 #if UNITY_EDITOR
 
@@ -62,6 +66,11 @@ namespace Rat
         private void ManageOverlook()
         {
             GMC_Gameplay.Instance.cameraManager.SetCurrentCamera(_overlookIsPressed ? GC.Camera.CameraOverlook : GC.Camera.CameraFollow);
+        }
+        
+        private void OnEnteredFinish()
+        {
+            RequestTransition(GC.States.Game.Gameplay.PostGame);
         }
         
 #if UNITY_EDITOR
