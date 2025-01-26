@@ -4766,6 +4766,7 @@ MonoBehaviour:
   _autoMakeDDOLOnAwake: 0
   _statesRoot: {fileID: 621682193}
   _cameraManager: {fileID: 316101024}
+  _pushForce: 10
   _currentGameLevel: {fileID: 0}
 --- !u!4 &1784477068
 Transform:

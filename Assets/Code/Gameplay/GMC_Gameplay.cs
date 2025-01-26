@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using PrimeTween;
 
 namespace Rat
 {
@@ -7,7 +9,8 @@ namespace Rat
         // [SerializeField]
         // private MovementComponent _movementComponent;
         //
-        
+
+        [SerializeField] private float _pushForce = 10f;
         
         public GameLevel _currentGameLevel;
         
@@ -29,7 +32,35 @@ namespace Rat
             GameEvents.OnCoinCollectedPersist += OnCoinCollectedPersist;
             GameEvents.OnSaveLocation += OnSaveLocation;
             GameEvents.OnBubbleDestroyedPersist += OnBubbleDestroyedPersist;
+            GameEvents.OnDeathEvent += OnDeathEvent;
 
+        }
+
+        private void OnDestroy()
+        {
+            GameEvents.OnDeathEvent -= OnDeathEvent;
+        }
+
+        private void OnDeathEvent(Player obj)
+        {
+            obj.gameObject.SetActive(false);
+            var filler = Instantiate(GameManager.Instance.playerDeathFillerObject);
+            filler.transform.position = obj.transform.position;
+            
+
+            GameInputManager.Instance.ChangeState(GC.States.InputMaps.None);
+
+            Sequence.Create()
+                .ChainCallback(() =>
+                {
+                    filler.GetComponent<Rigidbody2D>().AddForce(Vector2.up * _pushForce, ForceMode2D.Impulse);
+                })
+                .ChainDelay(1f)
+                .ChainCallback(() =>
+                {
+                    GameInputManager.Instance.ChangeState(GC.States.InputMaps.Player);
+                    GameManager.Instance.LoadScene(GC.Scenes.GAMEPLAY);
+                });
         }
 
         private void OnBubbleDestroyedPersist(string obj)

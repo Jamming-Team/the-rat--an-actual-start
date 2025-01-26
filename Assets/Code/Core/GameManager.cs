@@ -25,6 +25,8 @@ namespace Rat
     {
         [SerializeField] private GameObject _checkpointPrefab;
         public GameObject checkPointPrefab => _checkpointPrefab;
+        [SerializeField] private GameObject _playerDeathFillerObject;
+        public GameObject playerDeathFillerObject => _playerDeathFillerObject;
         [SerializeField] private Player _playerPrefab;
         public Player playerPrefab => _playerPrefab;
         [SerializeField] private int initialLevelIndex = 0;

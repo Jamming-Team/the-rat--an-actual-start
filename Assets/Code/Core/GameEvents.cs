@@ -13,5 +13,7 @@ namespace Rat
         
 
         public static Action<Vector3, int, string> OnSaveLocation;
+
+        public static Action<Player> OnDeathEvent;
     }
 }

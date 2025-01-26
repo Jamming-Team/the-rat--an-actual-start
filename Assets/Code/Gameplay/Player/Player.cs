@@ -36,5 +36,10 @@ namespace Rat
         {
             return _playerController;
         }
+
+        public void Kill()
+        {
+            GameEvents.OnDeathEvent?.Invoke(this);
+        }
     }
 }
