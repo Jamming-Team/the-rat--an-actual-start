@@ -21,6 +21,8 @@ namespace Rat
         // private float _pushScaleY = 40;
         [SerializeField]
         private LayerMask _playerLayerMask;
+        [SerializeField]
+        private BubbleGraphicsController _bubbleGraphicsController;
         // [SerializeField] [Range(0, 1)]
         // private float _upDirRatio = 0.5f;
         private float _bumpTimer = 0f;
@@ -40,9 +42,15 @@ namespace Rat
             }
         }
 
+        private void Start()
+        {
+            _bubbleGraphicsController.Init();
+        }
+
         private void Update()
         {
             _bumpTimer -= Time.deltaTime;
+            _bubbleGraphicsController.SwitchAnimation(BubbleGraphicsController.AnimationState.Bounce);
         }
         
         private void OnCollisionEnter2D(Collision2D collision)
