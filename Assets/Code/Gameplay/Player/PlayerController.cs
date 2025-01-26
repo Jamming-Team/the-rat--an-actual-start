@@ -13,7 +13,10 @@ namespace Rat
     /// </summary>
     public class PlayerController : MonoBehaviour, IPlayerController, IPushable
     {
-        [SerializeField] private ScriptableStats _stats;
+        [SerializeField] private ScriptableStats stats;
+        private ScriptableStats.StatsData _slowedStatsData;
+        public ScriptableStats.StatsData _stats => isInSlowZone ? _slowedStatsData : stats.data;
+        
         private Rigidbody2D _rb;
         private CircleCollider2D _col;
         private FrameInput _frameInput;
@@ -26,6 +29,7 @@ namespace Rat
         public event Action<bool, float> GroundedChanged;
         public event Action Jumped;
         public bool isActive = false;
+        public bool isInSlowZone = false;
 
         #endregion
 
@@ -39,7 +43,9 @@ namespace Rat
             _col = col;
             
             _cachedQueryStartInColliders = Physics2D.queriesStartInColliders;
-            
+
+            CreateSlowedStats();
+
             _initialized = true;
         }
         
@@ -49,6 +55,20 @@ namespace Rat
             // _col = GetComponent<CapsuleCollider2D>();
 
             // _cachedQueryStartInColliders = Physics2D.queriesStartInColliders;
+        }
+
+        private void CreateSlowedStats()
+        {
+            _slowedStatsData = stats.data.Clone();
+            _slowedStatsData.MaxSpeed *= stats.data.slowScalerX;
+            _slowedStatsData.Acceleration *= stats.data.slowScalerX;
+            _slowedStatsData.GroundDeceleration *= Mathf.Pow(stats.data.slowScalerX, -1);
+            _slowedStatsData.AirDeceleration *= Mathf.Pow(stats.data.slowScalerX, -1);
+            _slowedStatsData.MaxFallSpeed *= stats.data.slowScalerY;
+            _slowedStatsData.FallAcceleration *= stats.data.slowScalerY;
+            
+            _slowedStatsData.JumpPower *= Mathf.Clamp(0,1,stats.data.slowScalerY * 2);
+
         }
 
         private void Update()
@@ -94,6 +114,9 @@ namespace Rat
             HandleDirection();
             HandleGravity();
             HandleExternalForce();
+            HandleSlowZoneEffect();
+            
+            
             
             ApplyMovement();
         }
@@ -209,7 +232,12 @@ namespace Rat
             {
                 var inAirGravity = _stats.FallAcceleration;
                 if (_endedJumpEarly && _frameVelocity.y > 0) inAirGravity *= _stats.JumpEndEarlyGravityModifier;
-                _frameVelocity.y = Mathf.MoveTowards(_frameVelocity.y, -_stats.MaxFallSpeed, inAirGravity * Time.fixedDeltaTime);
+                
+                // _frameVelocity.y = Mathf.MoveTowards(_frameVelocity.y, -_stats.MaxFallSpeed, inAirGravity * 20 * Time.fixedDeltaTime);
+                if (_frameVelocity.y < - _stats.MaxFallSpeed)
+                    _frameVelocity.y = Mathf.MoveTowards(_frameVelocity.y, -_stats.MaxFallSpeed, inAirGravity * 2000 * Time.fixedDeltaTime);
+                else
+                    _frameVelocity.y = Mathf.MoveTowards(_frameVelocity.y, -_stats.MaxFallSpeed, inAirGravity * Time.fixedDeltaTime);
             }
         }
 
@@ -232,12 +260,31 @@ namespace Rat
             finalForce += bumpedForce;
             _externalForceToApply += finalForce;
         }
-
+        
         public void HandleExternalForce()
         {
             _frameVelocity += _externalForceToApply;
             _externalForceToApply = Vector2.zero;
         }
+
+        public void ApplySlowZone(bool entered)
+        {
+            isInSlowZone = entered;
+        }
+
+        private void HandleSlowZoneEffect()
+        {
+            if (isInSlowZone)
+            {
+                if (_frameVelocity.magnitude > _stats.slowedZoneMaxSpeed)
+                {
+                    _frameVelocity = Vector2.MoveTowards(_frameVelocity, _frameVelocity.normalized * _stats.slowedZoneMaxSpeed,  _stats.slowedZoneDownAcceleration * Time.fixedDeltaTime);
+                };
+                // _frameVelocity *= new Vector2(_stats.slowScalerX, _stats.slowScalerY);
+            }
+        }
+
+
     }
 
     public struct FrameInput

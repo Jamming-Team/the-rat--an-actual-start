@@ -366,5 +366,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79dea5999ebd4aee9383f8611c15a437, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _stats: {fileID: 11400000, guid: 1c44d419ecd812f318de343ef18f9588, type: 2}
+  stats: {fileID: 11400000, guid: 1c44d419ecd812f318de343ef18f9588, type: 2}
   isActive: 0
+  isInSlowZone: 0

@@ -12,25 +12,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 716d45d72dbf446c8aa70165b12e140d, type: 3}
   m_Name: Scriptable Stats
   m_EditorClassIdentifier: 
-  ObstacleLayers:
-    serializedVersion: 2
-    m_Bits: 64
-  SnapInput: 1
-  VerticalDeadZoneThreshold: 0.3
-  HorizontalDeadZoneThreshold: 0.1
-  MaxSpeed: 20
-  Acceleration: 60
-  GroundDeceleration: 60
-  AirDeceleration: 40
-  GroundingForce: -1.5
-  GrounderDistance: 0.05
-  JumpPower: 20
-  MaxFallSpeed: 25
-  FallAcceleration: 25
-  JumpEndEarlyGravityModifier: 3
-  CoyoteTime: 0.15
-  JumpBuffer: 0.2
-  pushScaleX: 40
-  pushScaleY: 40
-  upDirRatio: 0.23
-  pushBackForce: 0.7400002
+  data:
+    ObstacleLayers:
+      serializedVersion: 2
+      m_Bits: 64
+    SnapInput: 1
+    VerticalDeadZoneThreshold: 0.3
+    HorizontalDeadZoneThreshold: 0.1
+    MaxSpeed: 14
+    Acceleration: 120
+    GroundDeceleration: 60
+    AirDeceleration: 30
+    GroundingForce: -1.5
+    GrounderDistance: 0.05
+    JumpPower: 36
+    MaxFallSpeed: 40
+    FallAcceleration: 110
+    JumpEndEarlyGravityModifier: 3
+    CoyoteTime: 0.15
+    JumpBuffer: 0.2
+    pushScaleX: 50
+    pushScaleY: 50
+    upDirRatio: 0.5
+    pushBackForce: 1
+    pushBackForceMax: 50
+    slowScalerX: 0.759
+    slowScalerY: 0.061
+    slowedZoneDownAcceleration: 1000
+    slowedZoneMaxSpeed: 60
