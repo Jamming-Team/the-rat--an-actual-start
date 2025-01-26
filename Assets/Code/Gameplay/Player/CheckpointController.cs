@@ -16,7 +16,8 @@ namespace Rat
 
         private void OnDestroy()
         {
-            GameInputManager.Instance.player.interact -= Interact;
+            if (GameInputManager.Instance != null)
+                GameInputManager.Instance.player.interact -= Interact;
         }
 
         private void Interact()

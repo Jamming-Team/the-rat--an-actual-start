@@ -24,7 +24,7 @@ namespace Rat
                     Destroy(gameObject);
             }
             
-            var bubble = transform.GetComponent<Bubble>();
+            var bubble = transform.parent.GetComponent<Bubble>();
             
             if (bubble != null)
             {
