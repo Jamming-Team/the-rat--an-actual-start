@@ -10,6 +10,11 @@ namespace Rat
         [SerializeField]
         private bool _isDestructible = true;
 
+        [SerializeField]
+        private int _endurance = 1;
+        private int _maxEndurance;
+        [SerializeField]
+        private SpriteRenderer _enduranceMaskSpriteRenderer;
         // [SerializeField]
         // private float _pushScaleX = 30;
         // [SerializeField]
@@ -25,6 +30,7 @@ namespace Rat
         {
             if (_isDestructible)
             {
+                _maxEndurance = _endurance;
                 var data = GameManager.Instance.persistentLevelData;
                 if (data.shouldPersist && data.levelName == GameManager.Instance.currentLevelData.name)
                 {
@@ -58,10 +64,21 @@ namespace Rat
                 //
                 // pushVector.Scale(new Vector2(_pushScaleX, _pushScaleY));
                 collision.gameObject.GetComponent<Player>().GetPlayerController().ApplyForce(pushVector);
-
                 
                 if (_isDestructible)
-                    StartAnimationAndDestroy();
+                {
+                    _endurance--;
+                    if (_endurance <= 0)
+                    {
+                        StartAnimationAndDestroy();
+                    }
+                    else
+                    {
+                        var color = _enduranceMaskSpriteRenderer.color;
+                        color.a = 1f * ((_endurance - 1f) / (_maxEndurance - 1f));
+                        _enduranceMaskSpriteRenderer.color = color;
+                    }
+                }
             }
         }
 
