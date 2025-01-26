@@ -64,6 +64,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: BubleWithTrap
       objectReference: {fileID: 0}
+    - target: {fileID: 7721391548082497127, guid: 9a9f4b46f03b44943bffe7a3551e92b6, type: 3}
+      propertyPath: m_Color.a
+      value: 0.48235294
+      objectReference: {fileID: 0}
+    - target: {fileID: 7721391548082497127, guid: 9a9f4b46f03b44943bffe7a3551e92b6, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7721391548082497127, guid: 9a9f4b46f03b44943bffe7a3551e92b6, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7721391548082497127, guid: 9a9f4b46f03b44943bffe7a3551e92b6, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
