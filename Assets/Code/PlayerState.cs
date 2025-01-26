@@ -44,14 +44,14 @@ namespace Rat
             _context.player.overlook?.Invoke(value.isPressed);
         }
         
-#if UNITY_EDITOR
+// #if UNITY_EDITOR
 
         private void OnRestart()
         {
             _context.player.restart?.Invoke();
         }
         
-#endif
+// #endif
         
         
 

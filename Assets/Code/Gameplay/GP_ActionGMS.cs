@@ -22,11 +22,11 @@ namespace Rat
             
             GameEvents.OnEnteredFinish += OnEnteredFinish;
             
-#if UNITY_EDITOR
+// #if UNITY_EDITOR
 
             GameInputManager.Instance.player.restart += Restart;
             
-#endif
+// #endif
             
             ManageOverlook();
         }
@@ -41,11 +41,11 @@ namespace Rat
             
             GameEvents.OnEnteredFinish -= OnEnteredFinish;
             
-#if UNITY_EDITOR
+// #if UNITY_EDITOR
 
             GameInputManager.Instance.player.restart -= Restart;
             
-#endif
+// #endif
         }
         
         private void Pause()
@@ -73,13 +73,13 @@ namespace Rat
             RequestTransition(GC.States.Game.Gameplay.PostGame);
         }
         
-#if UNITY_EDITOR
+// #if UNITY_EDITOR
         
         private void Restart()
         {
             GameManager.Instance.LoadScene(GC.Scenes.GAMEPLAY);
         }
         
-#endif
+// #endif
     }
 }

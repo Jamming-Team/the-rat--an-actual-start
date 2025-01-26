@@ -16,11 +16,11 @@ namespace Rat
             public Action pause;
             public Action<bool> overlook;
             
-#if UNITY_EDITOR
+// #if UNITY_EDITOR
 
             public Action restart;
 
-#endif
+// #endif
 
         }
 

@@ -2643,7 +2643,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1891024641823886972, guid: 25f6b36e450c6ae80ad43258212d2ca4, type: 3}
       propertyPath: m_text
-      value: STREET BALLS
+      value: MEAT AND SOAP
       objectReference: {fileID: 0}
     - target: {fileID: 6064896341560174322, guid: 25f6b36e450c6ae80ad43258212d2ca4, type: 3}
       propertyPath: m_Name
