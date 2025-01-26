@@ -63,5 +63,7 @@ namespace Rat
         public float upDirRatio = 0.5f;
         [SerializeField] [Range(0, 5f)]
         public float pushBackForce = 1f;
+        [SerializeField] [Range(0, 100f)]
+        public float pushBackForceMax = 50f;
     }
 }

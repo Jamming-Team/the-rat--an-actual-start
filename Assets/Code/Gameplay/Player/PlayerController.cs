@@ -102,6 +102,8 @@ namespace Rat
         
         private float _frameLeftGrounded = float.MinValue;
         private bool _grounded;
+        
+        private bool _sideHit = false;
 
         private void CheckCollisions()
         {
@@ -111,6 +113,11 @@ namespace Rat
             bool groundHit = Physics2D.CircleCast(_col.bounds.center, _col.radius, Vector2.down, _stats.GrounderDistance, _stats.ObstacleLayers);
             bool ceilingHit = Physics2D.CircleCast(_col.bounds.center, _col.radius, Vector2.up, _stats.GrounderDistance, _stats.ObstacleLayers);
 
+            _sideHit = Physics2D.CircleCast(_col.bounds.center, _col.radius, Vector2.right, _stats.GrounderDistance, _stats.ObstacleLayers)
+                       || Physics2D.CircleCast(_col.bounds.center, _col.radius, Vector2.left, _stats.GrounderDistance, _stats.ObstacleLayers);
+
+            Debug.Log(_sideHit);
+            
             // Hit a Ceiling
             if (ceilingHit) _frameVelocity.y = Mathf.Min(0, _frameVelocity.y);
 
@@ -175,13 +182,15 @@ namespace Rat
 
         private void HandleDirection()
         {
-            if (_frameInput.Move.x == 0)
+            if (_frameInput.Move.x == 0 || _sideHit && !_grounded && Mathf.Abs(_rb.linearVelocity.x) <= 0.01f)
             {
                 var deceleration = _grounded ? _stats.GroundDeceleration : _stats.AirDeceleration;
                 _frameVelocity.x = Mathf.MoveTowards(_frameVelocity.x, 0, deceleration * Time.fixedDeltaTime);
             }
             else
             {
+                // if (_sideHit && !_grounded && Mathf.Abs(_rb.linearVelocity.x) <= 0.01f)
+                //     return;
                 _frameVelocity.x = Mathf.MoveTowards(_frameVelocity.x, _frameInput.Move.x * _stats.MaxSpeed, _stats.Acceleration * Time.fixedDeltaTime);
             }
         }
@@ -219,7 +228,8 @@ namespace Rat
             var newForceVector = Vector2.Lerp(forceVector, Vector2.up, _stats.upDirRatio);
             var finalForce = newForceVector;
             finalForce.Scale(new Vector2(_stats.pushScaleX, _stats.pushScaleY));
-            finalForce += newForceVector * -_frameVelocity * _stats.pushBackForce;
+            var bumpedForce = Vector2.ClampMagnitude(newForceVector * -_frameVelocity * _stats.pushBackForce, _stats.pushBackForceMax);
+            finalForce += bumpedForce;
             _externalForceToApply += finalForce;
         }
 
