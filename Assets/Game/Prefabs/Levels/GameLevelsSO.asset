@@ -13,12 +13,19 @@ MonoBehaviour:
   m_Name: GameLevelsSO
   m_EditorClassIdentifier: 
   levels:
-  - name: PainTrain
+  - name: This is PAIN TRAIN
     playerScore: 10
     maxScore: 100
     overlookCamera:
       position: {x: 0, y: 0}
       orthographicSize: 20
+    level: {fileID: 6063885538986259447, guid: bc7c9c01f75a2c245ad05e58a67b1bac, type: 3}
+  - name: How no to DIE
+    playerScore: 10
+    maxScore: 100
+    overlookCamera:
+      position: {x: 16.5, y: 5}
+      orthographicSize: 45
     level: {fileID: 4114050498690548901, guid: 1d992caeeab6d0b4a86bf04fa67db1d6, type: 3}
   - name: Level One
     playerScore: 0
