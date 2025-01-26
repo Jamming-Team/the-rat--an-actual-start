@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using PrimeTween;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -19,6 +20,8 @@ namespace Rat
         
         public List<string> coinsListTemp = new List<string>();
         public List<string> bubblesListTemp = new List<string>(); 
+        
+        public int currentPrice = 5;
     }
     
     public class GameManager : PersistentSingleton<GameManager>
@@ -116,6 +119,12 @@ namespace Rat
         {
             _gameLevelsSO.levels[_currentLevelIndex].playerScore = score;
         }
+
+        // public void DestroyWithDelay(GameObject gameObject)
+        // {
+        //     Sequence.Create()
+        //         .
+        // }
         
     }
 }

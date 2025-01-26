@@ -23,7 +23,7 @@ namespace Rat
             _playerController.isActive = true;
             _graphicsController.Init(_rigidbody);
             _playerController.Init(_rigidbody, _ciclreCollider);
-            _checkpointController.Init();
+            _checkpointController.Init(_playerController);
             
         }
 

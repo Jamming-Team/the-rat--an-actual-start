@@ -24,6 +24,9 @@ namespace Rat
             public static Action OnPressContinue;
             public static Action OnPressRestart;
             public static Action OnPressToMainMenu;
+
+            public static Action<int> OnPriceChanged;
+            public static Action<float> OnHoldSpawn;
         }
         
         

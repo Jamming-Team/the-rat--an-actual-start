@@ -125,6 +125,7 @@ namespace Rat
         
         private float _frameLeftGrounded = float.MinValue;
         private bool _grounded;
+        public bool grounded => _grounded;
         
         private bool _sideHit = false;
 

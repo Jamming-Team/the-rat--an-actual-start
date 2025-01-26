@@ -11,7 +11,7 @@ namespace Rat
         {
             public Action<float> move;
             public Action jump;
-            public Action interact;
+            public Action<bool> interact;
             public Action<Vector2> look;
             public Action pause;
             public Action<bool> overlook;

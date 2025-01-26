@@ -13,10 +13,10 @@ namespace Rat
             stateName = GC.States.InputMaps.Player;
         }
 
-        private void OnInteract()
+        private void OnInteract(InputValue value)
         {
-            Debug.Log("Interact");
-            _context.player.interact?.Invoke();
+            // Debug.Log("Interact");
+            _context.player.interact?.Invoke(value.isPressed);
         }
         
         private void OnJump()

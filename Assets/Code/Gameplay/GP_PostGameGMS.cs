@@ -24,6 +24,7 @@ namespace Rat
         
         private void OnPressRestart()
         {
+            GameManager.Instance.persistentLevelData = new();
             GameManager.Instance.LoadScene(GC.Scenes.GAMEPLAY);
         }
         

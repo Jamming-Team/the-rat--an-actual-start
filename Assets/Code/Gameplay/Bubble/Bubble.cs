@@ -102,19 +102,16 @@ namespace Rat
             OnBubbleDestroyed?.Invoke();
             OnBubbleDestroyedWithPlayer?.Invoke(_player);
             GameEvents.OnBubbleDestroyedPersist?.Invoke(gameObject.name);
-            _destroySequence = Sequence.Create()
-                .ChainCallback(() =>
-                    _bubbleGraphicsController.SwitchAnimation(BubbleGraphicsController.AnimationState.Expose))
-                .ChainDelay(1f)
-                .ChainCallback(() =>
-                    Destroy(gameObject, 0.1f));
+            _bubbleGraphicsController.SwitchAnimation(BubbleGraphicsController.AnimationState.Expose);
 
-            
+            Destroy(gameObject, 1.1f);
+
+
         }
 
         private void OnDestroy()
         {
-            _destroySequence.Stop();
+            // _destroySequence.Stop();
         }
     }
 }

@@ -38,6 +38,10 @@ namespace Rat
 
         private void OnDestroy()
         {
+            GameEvents.OnCoinCollected -= OnCoinCollected;
+            GameEvents.OnCoinCollectedPersist -= OnCoinCollectedPersist;
+            GameEvents.OnSaveLocation -= OnSaveLocation;
+            GameEvents.OnBubbleDestroyedPersist -= OnBubbleDestroyedPersist;
             GameEvents.OnDeathEvent -= OnDeathEvent;
         }
 
@@ -84,6 +88,9 @@ namespace Rat
             {
                 data.bubblesList.Add(x);
             });
+
+            data.currentPrice += 5;
+            GameEventsView.Gameplay.OnPriceChanged?.Invoke(data.currentPrice);
 
             
             GameManager.Instance.persistentLevelData.shouldPersist = true;
