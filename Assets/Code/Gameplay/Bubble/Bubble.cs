@@ -6,17 +6,23 @@ namespace Rat
     public class Bubble : MonoBehaviour
     {
         public Action OnBubbleDestroyed;
-        public Action<Player> OnBubbleDestroyedWithPlayer;
         
         [SerializeField]
         private bool _isDestructible = true;
 
+        [SerializeField]
+        private int _endurance = 1;
+        private int _maxEndurance;
+        [SerializeField]
+        private SpriteRenderer _enduranceMaskSpriteRenderer;
         // [SerializeField]
         // private float _pushScaleX = 30;
         // [SerializeField]
         // private float _pushScaleY = 40;
         [SerializeField]
         private LayerMask _playerLayerMask;
+        [SerializeField]
+        private BubbleGraphicsController _bubbleGraphicsController;
         // [SerializeField] [Range(0, 1)]
         // private float _upDirRatio = 0.5f;
         private float _bumpTimer = 0f;
@@ -26,6 +32,7 @@ namespace Rat
         {
             if (_isDestructible)
             {
+                _maxEndurance = _endurance;
                 var data = GameManager.Instance.persistentLevelData;
                 if (data.shouldPersist && data.levelName == GameManager.Instance.currentLevelData.name)
                 {
@@ -35,9 +42,15 @@ namespace Rat
             }
         }
 
+        private void Start()
+        {
+            _bubbleGraphicsController.Init();
+        }
+
         private void Update()
         {
             _bumpTimer -= Time.deltaTime;
+            _bubbleGraphicsController.SwitchAnimation(BubbleGraphicsController.AnimationState.Bounce);
         }
         
         private void OnCollisionEnter2D(Collision2D collision)
@@ -59,18 +72,28 @@ namespace Rat
                 //
                 // pushVector.Scale(new Vector2(_pushScaleX, _pushScaleY));
                 collision.gameObject.GetComponent<Player>().GetPlayerController().ApplyForce(pushVector);
-
                 
                 if (_isDestructible)
-                    StartAnimationAndDestroy(collision.gameObject.GetComponent<Player>());
+                {
+                    _endurance--;
+                    if (_endurance <= 0)
+                    {
+                        StartAnimationAndDestroy();
+                    }
+                    else
+                    {
+                        var color = _enduranceMaskSpriteRenderer.color;
+                        color.a = 1f * ((_endurance - 1f) / (_maxEndurance - 1f));
+                        _enduranceMaskSpriteRenderer.color = color;
+                    }
+                }
             }
         }
 
-        private void StartAnimationAndDestroy(Player player)
+        private void StartAnimationAndDestroy()
         {
             // TODO: start animation
             OnBubbleDestroyed?.Invoke();
-            OnBubbleDestroyedWithPlayer?.Invoke(player);
             GameEvents.OnBubbleDestroyedPersist?.Invoke(gameObject.name);
             Destroy(gameObject);
         }
