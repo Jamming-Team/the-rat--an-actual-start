@@ -23,12 +23,12 @@ namespace Rat
                     m_maskAnimator?.SetInteger(State, 0);
                     break;
                 case AnimationState.Bounce:
-                    m_animator.SetInteger(State, 1);
-                    m_maskAnimator?.SetInteger(State, 1);
+                    m_animator.SetTrigger("Bounce");
+                    m_maskAnimator?.SetTrigger("Bounce");
                     break;
                 case AnimationState.Expose:
-                    m_animator.SetInteger(State, 2);
-                    m_maskAnimator?.SetInteger(State, 2);
+                    m_animator.SetTrigger("Expose");
+                    m_maskAnimator?.SetTrigger("Expose");
                     break;
             }
         }

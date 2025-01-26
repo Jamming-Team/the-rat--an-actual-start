@@ -1,11 +1,13 @@
 ﻿using System;
 using UnityEngine;
+using PrimeTween;
 
 namespace Rat
 {
     public class Bubble : MonoBehaviour
     {
         public Action OnBubbleDestroyed;
+        public Action<Player> OnBubbleDestroyedWithPlayer;
         
         [SerializeField]
         private bool _isDestructible = true;
@@ -44,13 +46,16 @@ namespace Rat
 
         private void Start()
         {
-            _bubbleGraphicsController.Init();
+            // Debug.Log($"Bubble: {_bubbleGraphicsController}");
+            _bubbleGraphicsController?.Init();
+            
+            _bubbleGraphicsController?.SwitchAnimation(BubbleGraphicsController.AnimationState.Idle);
         }
 
         private void Update()
         {
+            // Debug.Log(_bubbleGraphicsController);
             _bumpTimer -= Time.deltaTime;
-            _bubbleGraphicsController.SwitchAnimation(BubbleGraphicsController.AnimationState.Bounce);
         }
         
         private void OnCollisionEnter2D(Collision2D collision)
@@ -78,24 +83,38 @@ namespace Rat
                     _endurance--;
                     if (_endurance <= 0)
                     {
-                        StartAnimationAndDestroy();
+                        StartAnimationAndDestroy(collision.gameObject.GetComponent<Player>());
                     }
                     else
                     {
                         var color = _enduranceMaskSpriteRenderer.color;
                         color.a = 1f * ((_endurance - 1f) / (_maxEndurance - 1f));
                         _enduranceMaskSpriteRenderer.color = color;
+                        _bubbleGraphicsController?.SwitchAnimation(BubbleGraphicsController.AnimationState.Bounce);
                     }
                 }
             }
         }
-
-        private void StartAnimationAndDestroy()
+        private Sequence _destroySequence;
+        private void StartAnimationAndDestroy(Player _player)
         {
             // TODO: start animation
             OnBubbleDestroyed?.Invoke();
+            OnBubbleDestroyedWithPlayer?.Invoke(_player);
             GameEvents.OnBubbleDestroyedPersist?.Invoke(gameObject.name);
-            Destroy(gameObject);
+            _destroySequence = Sequence.Create()
+                .ChainCallback(() =>
+                    _bubbleGraphicsController.SwitchAnimation(BubbleGraphicsController.AnimationState.Expose))
+                .ChainDelay(1f)
+                .ChainCallback(() =>
+                    Destroy(gameObject, 0.1f));
+
+            
+        }
+
+        private void OnDestroy()
+        {
+            _destroySequence.Stop();
         }
     }
 }
