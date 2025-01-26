@@ -14,15 +14,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4497759075900029046, guid: 4e5ea53d2220dd65898519205e1e065d, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.22
+      value: 0.34
       objectReference: {fileID: 0}
     - target: {fileID: 4497759075900029046, guid: 4e5ea53d2220dd65898519205e1e065d, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.22
+      value: 0.34
       objectReference: {fileID: 0}
     - target: {fileID: 4497759075900029046, guid: 4e5ea53d2220dd65898519205e1e065d, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.22
+      value: 0.34
       objectReference: {fileID: 0}
     - target: {fileID: 4497759075900029046, guid: 4e5ea53d2220dd65898519205e1e065d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -83,28 +83,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 5021483736034750348, guid: 9a9f4b46f03b44943bffe7a3551e92b6, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5021483736034750348, guid: 9a9f4b46f03b44943bffe7a3551e92b6, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5021483736034750348, guid: 9a9f4b46f03b44943bffe7a3551e92b6, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5021483736034750348, guid: 9a9f4b46f03b44943bffe7a3551e92b6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 33.08
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5021483736034750348, guid: 9a9f4b46f03b44943bffe7a3551e92b6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 45.09
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5021483736034750348, guid: 9a9f4b46f03b44943bffe7a3551e92b6, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.016288992
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5021483736034750348, guid: 9a9f4b46f03b44943bffe7a3551e92b6, type: 3}
       propertyPath: m_LocalRotation.w
@@ -136,7 +124,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6467243529444484063, guid: 9a9f4b46f03b44943bffe7a3551e92b6, type: 3}
       propertyPath: m_Name
-      value: Buble (16) Variant
+      value: BubleWithCoins
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -168,15 +156,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4497759075900029046, guid: 4e5ea53d2220dd65898519205e1e065d, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.22
+      value: 0.34
       objectReference: {fileID: 0}
     - target: {fileID: 4497759075900029046, guid: 4e5ea53d2220dd65898519205e1e065d, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.22
+      value: 0.34
       objectReference: {fileID: 0}
     - target: {fileID: 4497759075900029046, guid: 4e5ea53d2220dd65898519205e1e065d, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.22
+      value: 0.34
       objectReference: {fileID: 0}
     - target: {fileID: 4497759075900029046, guid: 4e5ea53d2220dd65898519205e1e065d, type: 3}
       propertyPath: m_LocalPosition.x

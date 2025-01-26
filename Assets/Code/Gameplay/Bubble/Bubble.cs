@@ -98,11 +98,12 @@ namespace Rat
         private Sequence _destroySequence;
         private void StartAnimationAndDestroy(Player _player)
         {
+            GetComponent<Collider2D>().enabled = false;
             // TODO: start animation
             OnBubbleDestroyed?.Invoke();
             OnBubbleDestroyedWithPlayer?.Invoke(_player);
             GameEvents.OnBubbleDestroyedPersist?.Invoke(gameObject.name);
-            _bubbleGraphicsController.SwitchAnimation(BubbleGraphicsController.AnimationState.Expose);
+            _bubbleGraphicsController?.SwitchAnimation(BubbleGraphicsController.AnimationState.Expose);
 
             Destroy(gameObject, 1.1f);
 

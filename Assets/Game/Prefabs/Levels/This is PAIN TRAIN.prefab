@@ -286,9 +286,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isDestructible: 1
+  _endurance: 1
+  _enduranceMaskSpriteRenderer: {fileID: 0}
   _playerLayerMask:
     serializedVersion: 2
     m_Bits: 8
+  _bubbleGraphicsController: {fileID: 0}
 --- !u!1 &95107137106874756
 GameObject:
   m_ObjectHideFlags: 0
@@ -1137,9 +1140,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isDestructible: 0
+  _endurance: 1
+  _enduranceMaskSpriteRenderer: {fileID: 0}
   _playerLayerMask:
     serializedVersion: 2
     m_Bits: 8
+  _bubbleGraphicsController: {fileID: 0}
 --- !u!1 &667702355598586322
 GameObject:
   m_ObjectHideFlags: 0
@@ -1284,9 +1290,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isDestructible: 1
+  _endurance: 1
+  _enduranceMaskSpriteRenderer: {fileID: 0}
   _playerLayerMask:
     serializedVersion: 2
     m_Bits: 8
+  _bubbleGraphicsController: {fileID: 0}
 --- !u!1 &730749898425299170
 GameObject:
   m_ObjectHideFlags: 0
@@ -1426,9 +1435,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isDestructible: 1
+  _endurance: 1
+  _enduranceMaskSpriteRenderer: {fileID: 0}
   _playerLayerMask:
     serializedVersion: 2
     m_Bits: 8
+  _bubbleGraphicsController: {fileID: 0}
 --- !u!1 &1024389344949286602
 GameObject:
   m_ObjectHideFlags: 0
@@ -1844,9 +1856,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isDestructible: 1
+  _endurance: 1
+  _enduranceMaskSpriteRenderer: {fileID: 0}
   _playerLayerMask:
     serializedVersion: 2
     m_Bits: 8
+  _bubbleGraphicsController: {fileID: 0}
 --- !u!1 &1132217822637958775
 GameObject:
   m_ObjectHideFlags: 0
@@ -3704,9 +3719,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isDestructible: 1
+  _endurance: 1
+  _enduranceMaskSpriteRenderer: {fileID: 0}
   _playerLayerMask:
     serializedVersion: 2
     m_Bits: 8
+  _bubbleGraphicsController: {fileID: 0}
 --- !u!1 &2674254326961453718
 GameObject:
   m_ObjectHideFlags: 0
@@ -3732,7 +3750,7 @@ Transform:
   m_GameObject: {fileID: 2674254326961453718}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 10.97, y: 54.07, z: 0}
+  m_LocalPosition: {x: 4.3, y: -0.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4027,9 +4045,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isDestructible: 1
+  _endurance: 1
+  _enduranceMaskSpriteRenderer: {fileID: 0}
   _playerLayerMask:
     serializedVersion: 2
     m_Bits: 8
+  _bubbleGraphicsController: {fileID: 0}
 --- !u!1 &3008724745626141690
 GameObject:
   m_ObjectHideFlags: 0
@@ -4310,9 +4331,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isDestructible: 1
+  _endurance: 1
+  _enduranceMaskSpriteRenderer: {fileID: 0}
   _playerLayerMask:
     serializedVersion: 2
     m_Bits: 8
+  _bubbleGraphicsController: {fileID: 0}
 --- !u!1 &3496394812784833950
 GameObject:
   m_ObjectHideFlags: 0
@@ -5310,9 +5334,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isDestructible: 0
+  _endurance: 1
+  _enduranceMaskSpriteRenderer: {fileID: 0}
   _playerLayerMask:
     serializedVersion: 2
     m_Bits: 8
+  _bubbleGraphicsController: {fileID: 0}
 --- !u!1 &4140466845860890031
 GameObject:
   m_ObjectHideFlags: 0
@@ -6311,9 +6338,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isDestructible: 0
+  _endurance: 1
+  _enduranceMaskSpriteRenderer: {fileID: 0}
   _playerLayerMask:
     serializedVersion: 2
     m_Bits: 8
+  _bubbleGraphicsController: {fileID: 0}
 --- !u!1 &4599885130060908985
 GameObject:
   m_ObjectHideFlags: 0
@@ -6878,9 +6908,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isDestructible: 1
+  _endurance: 1
+  _enduranceMaskSpriteRenderer: {fileID: 0}
   _playerLayerMask:
     serializedVersion: 2
     m_Bits: 8
+  _bubbleGraphicsController: {fileID: 0}
 --- !u!1 &4761677259181373403
 GameObject:
   m_ObjectHideFlags: 0
@@ -7587,9 +7620,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isDestructible: 0
+  _endurance: 1
+  _enduranceMaskSpriteRenderer: {fileID: 0}
   _playerLayerMask:
     serializedVersion: 2
     m_Bits: 8
+  _bubbleGraphicsController: {fileID: 0}
 --- !u!1 &5389703707039392625
 GameObject:
   m_ObjectHideFlags: 0
@@ -7728,9 +7764,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isDestructible: 1
+  _endurance: 1
+  _enduranceMaskSpriteRenderer: {fileID: 0}
   _playerLayerMask:
     serializedVersion: 2
     m_Bits: 8
+  _bubbleGraphicsController: {fileID: 0}
 --- !u!1 &5465310059384719029
 GameObject:
   m_ObjectHideFlags: 0
@@ -8921,6 +8960,7 @@ Transform:
   - {fileID: 8114830395640948398}
   - {fileID: 4357012426570245488}
   - {fileID: 6527691761087164733}
+  - {fileID: 2493256708937488119}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4827152061200844378
@@ -9358,9 +9398,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isDestructible: 1
+  _endurance: 1
+  _enduranceMaskSpriteRenderer: {fileID: 0}
   _playerLayerMask:
     serializedVersion: 2
     m_Bits: 8
+  _bubbleGraphicsController: {fileID: 0}
 --- !u!1 &6463435384886186087
 GameObject:
   m_ObjectHideFlags: 0
@@ -10509,9 +10552,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isDestructible: 1
+  _endurance: 1
+  _enduranceMaskSpriteRenderer: {fileID: 0}
   _playerLayerMask:
     serializedVersion: 2
     m_Bits: 8
+  _bubbleGraphicsController: {fileID: 0}
 --- !u!1 &6960868502598389810
 GameObject:
   m_ObjectHideFlags: 0
@@ -11076,9 +11122,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isDestructible: 0
+  _endurance: 1
+  _enduranceMaskSpriteRenderer: {fileID: 0}
   _playerLayerMask:
     serializedVersion: 2
     m_Bits: 8
+  _bubbleGraphicsController: {fileID: 0}
 --- !u!1 &7323607718982696001
 GameObject:
   m_ObjectHideFlags: 0
@@ -11219,9 +11268,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isDestructible: 1
+  _endurance: 1
+  _enduranceMaskSpriteRenderer: {fileID: 0}
   _playerLayerMask:
     serializedVersion: 2
     m_Bits: 8
+  _bubbleGraphicsController: {fileID: 0}
 --- !u!1 &7396949348704846941
 GameObject:
   m_ObjectHideFlags: 0
@@ -11796,9 +11848,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isDestructible: 1
+  _endurance: 1
+  _enduranceMaskSpriteRenderer: {fileID: 0}
   _playerLayerMask:
     serializedVersion: 2
     m_Bits: 8
+  _bubbleGraphicsController: {fileID: 0}
 --- !u!1 &7700034304463455190
 GameObject:
   m_ObjectHideFlags: 0
@@ -12071,9 +12126,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isDestructible: 1
+  _endurance: 1
+  _enduranceMaskSpriteRenderer: {fileID: 0}
   _playerLayerMask:
     serializedVersion: 2
     m_Bits: 8
+  _bubbleGraphicsController: {fileID: 0}
 --- !u!1 &7852646921902070795
 GameObject:
   m_ObjectHideFlags: 0
@@ -14348,3 +14406,65 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!1001 &7437192436869544315
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 3549956119236032002}
+    m_Modifications:
+    - target: {fileID: 5021483736034750348, guid: 9a9f4b46f03b44943bffe7a3551e92b6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5021483736034750348, guid: 9a9f4b46f03b44943bffe7a3551e92b6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 5021483736034750348, guid: 9a9f4b46f03b44943bffe7a3551e92b6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.016288992
+      objectReference: {fileID: 0}
+    - target: {fileID: 5021483736034750348, guid: 9a9f4b46f03b44943bffe7a3551e92b6, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5021483736034750348, guid: 9a9f4b46f03b44943bffe7a3551e92b6, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5021483736034750348, guid: 9a9f4b46f03b44943bffe7a3551e92b6, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5021483736034750348, guid: 9a9f4b46f03b44943bffe7a3551e92b6, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5021483736034750348, guid: 9a9f4b46f03b44943bffe7a3551e92b6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5021483736034750348, guid: 9a9f4b46f03b44943bffe7a3551e92b6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5021483736034750348, guid: 9a9f4b46f03b44943bffe7a3551e92b6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6467243529444484063, guid: 9a9f4b46f03b44943bffe7a3551e92b6, type: 3}
+      propertyPath: m_Name
+      value: Bubble (7)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9a9f4b46f03b44943bffe7a3551e92b6, type: 3}
+--- !u!4 &2493256708937488119 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5021483736034750348, guid: 9a9f4b46f03b44943bffe7a3551e92b6, type: 3}
+  m_PrefabInstance: {fileID: 7437192436869544315}
+  m_PrefabAsset: {fileID: 0}
