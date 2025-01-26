@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 412206093585874669}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.6, z: 0}
+  m_LocalPosition: {x: -0.122, y: 0.474, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -9095717837082945937, guid: bd3cb4af8406d4436a2ae8c2aafe1f8d, type: 3}
+  m_Sprite: {fileID: 5231433792190000582, guid: 8c5483933e1667324aedb399e85166d5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -152,7 +152,7 @@ Transform:
   m_GameObject: {fileID: 665887976036966181}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.47686255, y: 0.80947894, z: -0.016288992}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -322,6 +322,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _price: 2
   _checkpointPrefab: {fileID: 2362665591751624015, guid: cd14260b3b2ecbb42b0816f91a214e23, type: 3}
+  _timeNeededToFill: 1
 --- !u!1 &2755761555712975294
 GameObject:
   m_ObjectHideFlags: 0
