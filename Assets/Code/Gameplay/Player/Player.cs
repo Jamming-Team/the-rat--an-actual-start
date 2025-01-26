@@ -11,6 +11,8 @@ namespace Rat
         private GraphicsController _graphicsController;
         private Rigidbody2D _rigidbody;
         private CircleCollider2D _ciclreCollider;
+        [SerializeField]
+        private CheckpointController _checkpointController;
 
 
         public void Init()
@@ -21,6 +23,8 @@ namespace Rat
             _playerController.isActive = true;
             _graphicsController.Init(_rigidbody);
             _playerController.Init(_rigidbody, _ciclreCollider);
+            _checkpointController.Init();
+            
         }
 
         public void Deactivate()

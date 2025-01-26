@@ -158,6 +158,7 @@ Transform:
   m_Children:
   - {fileID: 7949632693039894457}
   - {fileID: 4545262301916087702}
+  - {fileID: 5801123434249518224}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1294590998834999435
@@ -174,6 +175,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerController: {fileID: 7991352147625434819}
   _graphicsController: {fileID: 6738515301186707457}
+  _checkpointController: {fileID: 2644451930797791290}
 --- !u!50 &4403314117734660065
 Rigidbody2D:
   serializedVersion: 5
@@ -274,6 +276,52 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.5
+--- !u!1 &871944690139927769
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5801123434249518224}
+  - component: {fileID: 2644451930797791290}
+  m_Layer: 3
+  m_Name: CheckpointController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5801123434249518224
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 871944690139927769}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3364710875951973780}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2644451930797791290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 871944690139927769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bb4888832a345c78eb04d3f8abea24e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _price: 2
+  _checkpointPrefab: {fileID: 2362665591751624015, guid: cd14260b3b2ecbb42b0816f91a214e23, type: 3}
 --- !u!1 &2755761555712975294
 GameObject:
   m_ObjectHideFlags: 0

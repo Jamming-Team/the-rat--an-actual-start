@@ -32,6 +32,8 @@ namespace Rat
             
             GMC_Gameplay.Instance.SetCurrentScore(data.currentScore);
             _playerSpawnPoint.position = data.checkPointPosition;
+            var checkpoint = Instantiate(GameManager.Instance.checkPointPrefab);
+            checkpoint.transform.position = data.checkPointPosition;
         }
         
         

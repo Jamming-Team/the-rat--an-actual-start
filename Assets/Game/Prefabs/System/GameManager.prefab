@@ -350,6 +350,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _autoUnparentOnAwake: 1
   _autoMakeDDOLOnAwake: 1
+  _checkpointPrefab: {fileID: 2362665591751624015, guid: cd14260b3b2ecbb42b0816f91a214e23, type: 3}
   _playerPrefab: {fileID: 1294590998834999435, guid: eb7300df1e35775a99534e1c5b806719, type: 3}
   initialLevelIndex: 0
   _gameLevelsSO: {fileID: 11400000, guid: 9b6957b2447b2faa9be30fe1e890b114, type: 2}
