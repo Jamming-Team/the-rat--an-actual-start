@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.Pool;
 
 namespace Rat {
@@ -13,6 +14,8 @@ namespace Rat {
         [SerializeField] int defaultCapacity = 10;
         [SerializeField] int maxPoolSize = 100;
         [SerializeField] int maxSoundInstances = 30;
+
+        [SerializeField] public AudioMixer mixer;
 
         void Start() {
             InitializePool();

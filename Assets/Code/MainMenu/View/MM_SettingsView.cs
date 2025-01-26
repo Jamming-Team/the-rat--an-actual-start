@@ -24,5 +24,22 @@ namespace Rat
         {
             GameEventsView.MainMenu.OnPressBackButton?.Invoke();
         }
+
+        public void SetMasterVolume(float volume)
+        {
+            SoundManager.Instance.mixer.SetFloat("MasterVolume", Mathf.Log10(volume) * 20f);
+        }
+
+        public void SetMusicVolume(float volume)
+        {
+            SoundManager.Instance.mixer.SetFloat("MasterVolume", Mathf.Log10(volume) * 20f);
+
+        }
+
+        public void SetSfxVolume(float volume)
+        {
+            SoundManager.Instance.mixer.SetFloat("MasterVolume", Mathf.Log10(volume) * 20f);
+
+        }
     }
 }

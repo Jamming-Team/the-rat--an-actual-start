@@ -46,7 +46,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _autoUnparentOnAwake: 0
   _autoMakeDDOLOnAwake: 0
-  initialPlaylist: []
+  initialPlaylist:
+  - {fileID: 8300000, guid: 31aa4a779fe5e15c0889cef2219a68f2, type: 3}
+  - {fileID: 8300000, guid: 31aa4a779fe5e15c0889cef2219a68f2, type: 3}
+  - {fileID: 8300000, guid: 31aa4a779fe5e15c0889cef2219a68f2, type: 3}
+  - {fileID: 8300000, guid: 31aa4a779fe5e15c0889cef2219a68f2, type: 3}
+  - {fileID: 8300000, guid: 31aa4a779fe5e15c0889cef2219a68f2, type: 3}
   musicMixerGroup: {fileID: -2905074956490595832, guid: 9228d675d7810289aae704c3d8c0f42f, type: 2}
 --- !u!1 &2676162705736896403
 GameObject:
@@ -300,6 +305,7 @@ MonoBehaviour:
   defaultCapacity: 10
   maxPoolSize: 100
   maxSoundInstances: 30
+  mixer: {fileID: 24100000, guid: 9228d675d7810289aae704c3d8c0f42f, type: 2}
 --- !u!1 &7761060062754665562
 GameObject:
   m_ObjectHideFlags: 0
