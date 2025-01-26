@@ -19,15 +19,15 @@ namespace Rat
             switch (state)
             {
                 case AnimationState.Idle:
-                    m_animator.SetInteger(State, 0);
+                    m_animator?.SetInteger(State, 0);
                     m_maskAnimator?.SetInteger(State, 0);
                     break;
                 case AnimationState.Bounce:
-                    m_animator.SetTrigger("Bounce");
+                    m_animator?.SetTrigger("Bounce");
                     m_maskAnimator?.SetTrigger("Bounce");
                     break;
                 case AnimationState.Expose:
-                    m_animator.SetTrigger("Expose");
+                    m_animator?.SetTrigger("Expose");
                     m_maskAnimator?.SetTrigger("Expose");
                     break;
             }

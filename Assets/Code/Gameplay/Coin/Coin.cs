@@ -6,6 +6,7 @@ namespace Rat
     public class Coin : MonoBehaviour
     {
         
+        [SerializeField] private SoundData _coinSound;
         
         [SerializeField]
         private int amount = 1;
@@ -43,6 +44,10 @@ namespace Rat
         {
             GameEvents.OnCoinCollected?.Invoke(amount);
             GameEvents.OnCoinCollectedPersist?.Invoke(gameObject.name);
+            SoundManager.Instance.CreateSoundBuilder()
+                .WithRandomPitch()
+                .WithPosition(transform.position)
+                .Play(_coinSound);
             Destroy(gameObject);
         }
 
@@ -52,6 +57,10 @@ namespace Rat
             {
                 GameEvents.OnCoinCollected?.Invoke(amount);
                 GameEvents.OnCoinCollectedPersist?.Invoke(gameObject.name);
+                SoundManager.Instance.CreateSoundBuilder()
+                    .WithRandomPitch()
+                    .WithPosition(transform.position)
+                    .Play(_coinSound);
                 Destroy(gameObject);
             }
         }

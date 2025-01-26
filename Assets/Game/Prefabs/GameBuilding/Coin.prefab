@@ -102,6 +102,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b15b6e9fc66d4d378e8fcfc39ecfdae7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _coinSound:
+    clip: {fileID: 8300000, guid: 12a58aaecb0c3ee3ba564bf73910843f, type: 3}
+    mixerGroup: {fileID: 3700603565923916845, guid: 9228d675d7810289aae704c3d8c0f42f, type: 2}
+    loop: 0
+    playOnAwake: 0
+    frequentSound: 0
+    mute: 0
+    bypassEffects: 0
+    bypassListenerEffects: 0
+    bypassReverbZones: 0
+    priority: 128
+    volume: 1
+    pitch: 1
+    panStereo: 0
+    spatialBlend: 0
+    reverbZoneMix: 1
+    dopplerLevel: 1
+    spread: 0
+    minDistance: 1
+    maxDistance: 500
+    ignoreListenerVolume: 0
+    ignoreListenerPause: 0
+    rolloffMode: 0
   amount: 1
   _playerLayerMask:
     serializedVersion: 2

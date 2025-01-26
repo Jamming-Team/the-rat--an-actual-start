@@ -317,6 +317,52 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3c7de2d3f974b7583e2e6de92520ae8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _bubbleHit:
+    clip: {fileID: 8300000, guid: c263c020ad69fd52581d6f82fb1aa93a, type: 3}
+    mixerGroup: {fileID: 3700603565923916845, guid: 9228d675d7810289aae704c3d8c0f42f, type: 2}
+    loop: 0
+    playOnAwake: 0
+    frequentSound: 0
+    mute: 0
+    bypassEffects: 0
+    bypassListenerEffects: 0
+    bypassReverbZones: 0
+    priority: 128
+    volume: 1
+    pitch: 1
+    panStereo: 0
+    spatialBlend: 0
+    reverbZoneMix: 1
+    dopplerLevel: 1
+    spread: 0
+    minDistance: 1
+    maxDistance: 500
+    ignoreListenerVolume: 0
+    ignoreListenerPause: 0
+    rolloffMode: 0
+  _bubbleDeath:
+    clip: {fileID: 8300000, guid: 5395f2263ec439db38f78dec6b222fa1, type: 3}
+    mixerGroup: {fileID: 3700603565923916845, guid: 9228d675d7810289aae704c3d8c0f42f, type: 2}
+    loop: 0
+    playOnAwake: 0
+    frequentSound: 0
+    mute: 0
+    bypassEffects: 0
+    bypassListenerEffects: 0
+    bypassReverbZones: 0
+    priority: 128
+    volume: 1
+    pitch: 1
+    panStereo: 0
+    spatialBlend: 0
+    reverbZoneMix: 1
+    dopplerLevel: 1
+    spread: 0
+    minDistance: 1
+    maxDistance: 500
+    ignoreListenerVolume: 0
+    ignoreListenerPause: 0
+    rolloffMode: 0
   _isDestructible: 1
   _endurance: 3
   _enduranceMaskSpriteRenderer: {fileID: 5297726664133250201}

@@ -6,6 +6,9 @@ namespace Rat
 {
     public class Bubble : MonoBehaviour
     {
+        [SerializeField] private SoundData _bubbleHit;
+        [SerializeField] private SoundData _bubbleDeath;
+        
         public Action OnBubbleDestroyed;
         public Action<Player> OnBubbleDestroyedWithPlayer;
         
@@ -46,6 +49,7 @@ namespace Rat
 
         private void Start()
         {
+            HandleEnduranceView();
             // Debug.Log($"Bubble: {_bubbleGraphicsController}");
             _bubbleGraphicsController?.Init();
             
@@ -87,17 +91,33 @@ namespace Rat
                     }
                     else
                     {
-                        var color = _enduranceMaskSpriteRenderer.color;
-                        color.a = 1f * ((_endurance - 1f) / (_maxEndurance - 1f));
-                        _enduranceMaskSpriteRenderer.color = color;
-                        _bubbleGraphicsController?.SwitchAnimation(BubbleGraphicsController.AnimationState.Bounce);
+                        SoundManager.Instance.CreateSoundBuilder()
+                            .WithRandomPitch()
+                            .WithPosition(transform.position)
+                            .Play(_bubbleHit);
+                        
+                        HandleEnduranceView();
                     }
                 }
             }
         }
+
+        public void HandleEnduranceView()
+        {
+            var color = _enduranceMaskSpriteRenderer.color;
+            color.a = 1f * ((_endurance - 1f) / (_maxEndurance - 1f));
+            _enduranceMaskSpriteRenderer.color = color;
+            if (_bubbleGraphicsController != null)
+                _bubbleGraphicsController?.SwitchAnimation(BubbleGraphicsController.AnimationState.Bounce);
+        }
+        
         private Sequence _destroySequence;
         private void StartAnimationAndDestroy(Player _player)
         {
+            SoundManager.Instance.CreateSoundBuilder()
+                .WithRandomPitch()
+                .WithPosition(transform.position)
+                .Play(_bubbleDeath);
             GetComponent<Collider2D>().enabled = false;
             // TODO: start animation
             OnBubbleDestroyed?.Invoke();
