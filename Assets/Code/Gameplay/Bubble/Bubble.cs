@@ -6,6 +6,7 @@ namespace Rat
     public class Bubble : MonoBehaviour
     {
         public Action OnBubbleDestroyed;
+        public Action<Player> OnBubbleDestroyedWithPlayer;
         
         [SerializeField]
         private bool _isDestructible = true;
@@ -61,14 +62,15 @@ namespace Rat
 
                 
                 if (_isDestructible)
-                    StartAnimationAndDestroy();
+                    StartAnimationAndDestroy(collision.gameObject.GetComponent<Player>());
             }
         }
 
-        private void StartAnimationAndDestroy()
+        private void StartAnimationAndDestroy(Player player)
         {
             // TODO: start animation
             OnBubbleDestroyed?.Invoke();
+            OnBubbleDestroyedWithPlayer?.Invoke(player);
             GameEvents.OnBubbleDestroyedPersist?.Invoke(gameObject.name);
             Destroy(gameObject);
         }
