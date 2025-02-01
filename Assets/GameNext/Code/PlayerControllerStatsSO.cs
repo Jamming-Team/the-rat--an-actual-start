@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace GameNext
 {
@@ -10,9 +11,39 @@ namespace GameNext
         [System.Serializable]
         public class StatsData
         {
-            public float groundAcceleration = 3f;
-            public float maxGroundSpeed = 6f;
-            public float groundDeceleration = 6f;
+            public General general;
+            public Grounded grounded;
+            public InAir inAir;
+            
+            [System.Serializable]
+            public class General
+            {
+                public LayerMask groundLayer;
+                public float collisionDetectionDistance = 0.1f;
+            }
+
+            [System.Serializable]
+            public class Grounded
+            {
+                [FormerlySerializedAs("totalStopThreshold")] public float XtotalStopThreshold = 0.02f;
+                
+                public float groundAcceleration = 3f;
+                public float maxGroundSpeed = 6f;
+                public float groundDeceleration = 6f;
+                
+                public float jumpForce = 5f;
+            }
+
+            [System.Serializable]
+            public class InAir
+            {
+                public float XtotalStopThreshold = 0.02f;
+
+                public float gravityAcceleration = 8f;
+                public float fallMaxSpeed = 12f;
+            }
+            
+            
         }
     }
 }

@@ -13,6 +13,13 @@ MonoBehaviour:
   m_Name: PCStats
   m_EditorClassIdentifier: 
   data:
-    groundAcceleration: 12
-    maxGroundSpeed: 12
-    groundDeceleration: 24
+    general:
+      groundLayer:
+        serializedVersion: 2
+        m_Bits: 64
+      collisionDetectionDistance: 0.1
+    grounded:
+      totalStopThreshold: 0.2
+      groundAcceleration: 6
+      maxGroundSpeed: 6
+      groundDeceleration: 12

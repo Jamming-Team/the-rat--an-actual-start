@@ -10,6 +10,7 @@ namespace GameNext
         public IState currentState => _currentState;
         
         
+        
         // protected StateMachine()
         // {
         //     GetComponentsInChildren(m_states);
@@ -30,13 +31,9 @@ namespace GameNext
                 // Debug.Log(x.GetType());
             });
             // m_currentState = m_states[0];
+            ChangeState(_states[0].GetType());
         }
         
-        public void WithInitialState(IState initialState)
-        {
-            ChangeState(initialState.GetType());
-        }
-
         public void OnDestroy()
         {
             _states.ForEach(x =>

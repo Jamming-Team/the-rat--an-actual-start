@@ -2,14 +2,20 @@ namespace GameNext.GameNext.Code.SM.Gameplay.PC
 {
     public class InAir : StateBase<PlayerController>, IPC_States
     {
+        public void HandleTransition()
+        {
+            if (_core.conditions.groundHit)
+                RequestTransition<Grounded>();
+        }
+        
         public void HandleX()
         {
-            throw new System.NotImplementedException();
+            
         }
 
         public void HandleY()
         {
-            throw new System.NotImplementedException();
+            _core.frameForce.y += -_core.stats.inAir.gravityAcceleration;
         }
     }
 }
