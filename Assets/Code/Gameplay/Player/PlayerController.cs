@@ -113,6 +113,7 @@ namespace Rat
             HandleJump();
             HandleDirection();
             HandleGravity();
+            
             HandleExternalForce();
             HandleSlowZoneEffect();
             
@@ -234,11 +235,7 @@ namespace Rat
                 var inAirGravity = _stats.FallAcceleration;
                 if (_endedJumpEarly && _frameVelocity.y > 0) inAirGravity *= _stats.JumpEndEarlyGravityModifier;
                 
-                // _frameVelocity.y = Mathf.MoveTowards(_frameVelocity.y, -_stats.MaxFallSpeed, inAirGravity * 20 * Time.fixedDeltaTime);
-                if (_frameVelocity.y < - _stats.MaxFallSpeed)
-                    _frameVelocity.y = Mathf.MoveTowards(_frameVelocity.y, -_stats.MaxFallSpeed, inAirGravity * 2000 * Time.fixedDeltaTime);
-                else
-                    _frameVelocity.y = Mathf.MoveTowards(_frameVelocity.y, -_stats.MaxFallSpeed, inAirGravity * Time.fixedDeltaTime);
+                _frameVelocity.y = Mathf.MoveTowards(_frameVelocity.y, -_stats.MaxFallSpeed, inAirGravity * Time.fixedDeltaTime);
             }
         }
 
