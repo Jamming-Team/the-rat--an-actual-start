@@ -15,4 +15,4 @@ MonoBehaviour:
   data:
     groundAcceleration: 12
     maxGroundSpeed: 12
-    groundDeceleration: 12
+    groundDeceleration: 24
