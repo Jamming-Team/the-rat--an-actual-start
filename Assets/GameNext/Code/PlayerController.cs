@@ -40,6 +40,7 @@ namespace GameNext
             conditions = new Conditions(this);
             
             _stateMachine.Init(this);
+            time = Time.time;
         }
 
         private void FixedUpdate()
@@ -47,7 +48,6 @@ namespace GameNext
             frameForce = Vector2.zero;
             frameBurst = Vector2.zero;
             pastVelocity = _rb.linearVelocity;
-            time = Time.time;
 
             GatherCollisions();
 
@@ -56,11 +56,17 @@ namespace GameNext
             (_stateMachine.currentState as IPC_States)?.HandleY();
 
             ApplyForce();
+            
+            conditions.hasJumpToConsume = false;
+            
+            // Debug.Log(conditions.jumpToConsume);
         }
 
         // Update is called once per frame
         void Update()
         {
+            time += Time.deltaTime;
+            
             GatherInput();
         }
 
@@ -75,7 +81,7 @@ namespace GameNext
             
             if (frameInput.jumpDown)
             {
-                conditions.jumpToConsume = true;
+                conditions.hasJumpToConsume = true;
                 markers.timeJumpWasPressed = time;
             }
         }
@@ -118,16 +124,17 @@ namespace GameNext
 
         public class Markers
         {
-            public float timeJumpWasPressed;
+            public float timeJumpWasPressed = float.MinValue;
+            public float timeLeftGround = float.MinValue;
         }
 
         public class Conditions
         {
-            private PlayerController _playerController;
+            private PlayerController _pc;
 
-            public Conditions(PlayerController playerController)
+            public Conditions(PlayerController pc)
             {
-                _playerController = playerController;
+                _pc = pc;
             }
             
             // Physics
@@ -136,17 +143,38 @@ namespace GameNext
             public bool leftHit;
             public bool rightHit;
             
-            // 
-            public bool grounded => _playerController._stateMachine.currentState.GetType() == typeof(Grounded);
+            // Simple
             public bool endedJumpEarly;
-            public bool jumpToConsume;
+            public bool hasJumpToConsume;
+            public bool coyoteUsable;
+            // public bool bufferedJumpUsable;
             
             // Complex
-            public bool coyoteUsable;
-            public bool bufferedJumpUsable;
+            public bool grounded => _pc._stateMachine.currentState.GetType() == typeof(Grounded);
+            // public bool canUseCoyote => coyoteUsable 
+            //                             && _pc.time < _pc.markers.timeLeftGround + _pc.stats.inAir.coyoteTime;
+            // public bool hasBufferedJump => bufferedJumpUsable 
+            //                                && _pc.time < _pc.markers.timeJumpWasPressed + _pc.stats.grounded.jumpBufferTime;
+            public bool shouldJump
+            {
+                get
+                {
+                    switch (_pc._stateMachine.currentState)
+                    {
+                        case Grounded:
+                            return hasJumpToConsume
+                            || _pc.time < _pc.markers.timeJumpWasPressed + _pc.stats.grounded.jumpBufferTime; 
+                        case InAir:
+                            return hasJumpToConsume
+                                   && (coyoteUsable
+                                       && _pc.time < _pc.markers.timeLeftGround + _pc.stats.inAir.coyoteTime); 
+                    }
+                    return false;
+                }
+            }
 
             public bool antiInputX =>
-                _playerController.frameInput.move.x / _playerController.pastVelocity.x < 0;
+                _pc.frameInput.move.x / _pc.pastVelocity.x < 0;
         }
     }
 }

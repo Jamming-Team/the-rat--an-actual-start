@@ -4,6 +4,21 @@ namespace GameNext.GameNext.Code.SM.Gameplay.PC
 {
     public class Grounded : StateBase<PlayerController>, IPC_States
     {
+
+        protected override void OnEnter()
+        {
+            base.OnEnter();
+            _core.conditions.coyoteUsable = true;
+            // _core.conditions.bufferedJumpUsable = true;
+        }
+
+        protected override void OnExit()
+        {
+            base.OnExit();
+            _core.markers.timeLeftGround = _core.time;
+            // _core.conditions.bufferedJumpUsable = false;
+        }
+
         public void HandleTransition()
         {
             if (!_core.conditions.groundHit)
@@ -43,15 +58,22 @@ namespace GameNext.GameNext.Code.SM.Gameplay.PC
 
         public void HandleY()
         {
-            if (_core.conditions.jumpToConsume)
+            _core.frameForce.y += -_core.stats.inAir.gravityAcceleration;
+
+            if (_core.conditions.shouldJump)
                 ExecuteJump();
             // throw new System.NotImplementedException();
         }
 
         private void ExecuteJump()
         {
+            if (_core.pastVelocity.y < 0)
+                _core.frameBurst.y += -_core.pastVelocity.y;
+            
             _core.frameBurst.y += _core.stats.grounded.jumpForce;
-            _core.conditions.jumpToConsume = false;
+            _core.conditions.hasJumpToConsume = false;
+            _core.conditions.coyoteUsable = false;
+            _core.markers.timeJumpWasPressed = float.MinValue;
         }
         
     }

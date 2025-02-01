@@ -32,6 +32,7 @@ namespace GameNext
                 public float groundDeceleration = 6f;
                 
                 public float jumpForce = 5f;
+                public float jumpBufferTime = 0.3f;
             }
 
             [System.Serializable]
@@ -41,6 +42,8 @@ namespace GameNext
 
                 public float gravityAcceleration = 8f;
                 public float fallMaxSpeed = 12f;
+                
+                public float coyoteTime = 0.3f;
             }
             
             
