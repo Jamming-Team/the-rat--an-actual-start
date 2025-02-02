@@ -23,10 +23,13 @@ MonoBehaviour:
       groundAcceleration: 6
       maxGroundSpeed: 6
       groundDeceleration: 12
-      jumpForce: 5
+      jumpForce: 10
       jumpBufferTime: 0.4
     inAir:
       XtotalStopThreshold: 0.02
+      airXAcceleration: 3
+      airXDeceleration: 3
+      airXMaxSpeed: 6
       gravityAcceleration: 8
       fallMaxSpeed: 12
       coyoteTime: 1

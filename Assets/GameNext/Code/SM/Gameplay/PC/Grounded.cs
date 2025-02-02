@@ -29,9 +29,9 @@ namespace GameNext.GameNext.Code.SM.Gameplay.PC
         {
             if (_core.frameInput.move.x == 0)
             {
-                if (Mathf.Abs(_core.pastVelocity.x) > _core.stats.grounded.XtotalStopThreshold)
+                if (Mathf.Abs(_core.pastVelocity.x) > _core.stats.inAir.XtotalStopThreshold)
                 {
-                    _core.frameForce.x += -Mathf.Sign(_core.pastVelocity.x) * _core.stats.grounded.groundDeceleration;
+                    _core.frameForce.x += -Mathf.Sign(_core.pastVelocity.x) * _core.stats.inAir.airXDeceleration;
                 }
                 else
                 {
@@ -42,15 +42,15 @@ namespace GameNext.GameNext.Code.SM.Gameplay.PC
             {
                 if (!_core.conditions.antiInputX)
                 {
-                    if (Mathf.Abs(_core.pastVelocity.x) < _core.stats.grounded.maxGroundSpeed)
+                    if (Mathf.Abs(_core.pastVelocity.x) < _core.stats.inAir.airXMaxSpeed)
                     {
-                        _core.frameForce.x += _core.frameInput.move.x * _core.stats.grounded.groundAcceleration;
+                        _core.frameForce.x += _core.frameInput.move.x * _core.stats.inAir.airXAcceleration;
                     }
                 }
                 else
                 {
-                    _core.frameForce.x += -Mathf.Sign(_core.pastVelocity.x) * _core.stats.grounded.groundDeceleration;
-                    _core.frameForce.x += _core.frameInput.move.x * _core.stats.grounded.groundAcceleration;
+                    _core.frameForce.x += -Mathf.Sign(_core.pastVelocity.x) * _core.stats.inAir.airXDeceleration;
+                    _core.frameForce.x += _core.frameInput.move.x * _core.stats.inAir.airXAcceleration;
                 }
 
             }

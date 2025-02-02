@@ -39,7 +39,11 @@ namespace GameNext
             public class InAir
             {
                 public float XtotalStopThreshold = 0.02f;
-
+                
+                public float airXAcceleration = 3f;
+                public float airXDeceleration = 3f;
+                public float airXMaxSpeed = 6f;
+                
                 public float gravityAcceleration = 8f;
                 public float fallMaxSpeed = 12f;
                 
