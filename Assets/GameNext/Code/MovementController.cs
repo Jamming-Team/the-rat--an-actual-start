@@ -79,7 +79,7 @@ namespace GameNext
                 markers[Markers.TimeJumpWasPressed] = frameData.time;
             }
             
-            conditions[Conditions.AntiInputX] = frameInput.move.x / frameData.pastVelocity.x < 0;
+            conditions[Conditions.AntiInputX] = Mathf.Sign(frameInput.move.x) / Mathf.Sign(frameData.pastVelocity.x) < 0;
             
             conditions[Conditions.ShouldJumpGrounded] = conditions[Conditions.HasJumpToConsume]
                                                         || frameData.time < markers[Markers.TimeJumpWasPressed] + jumpData.jumpBufferTime; 
@@ -95,6 +95,16 @@ namespace GameNext
             if (frameData.frameBurst != Vector2.zero)
                 _rb.AddForce(frameData.frameBurst, ForceMode2D.Impulse);
         }
+        
+        public void NullifyVelocity(bool x = false, bool y = false)
+         {
+             var newVelocity = _rb.linearVelocity;
+             if (x)
+                 newVelocity.x = 0f;
+             if (y)
+                 newVelocity.y = 0f;
+             _rb.linearVelocity = newVelocity;
+         }
         
         // Inner Classes
         

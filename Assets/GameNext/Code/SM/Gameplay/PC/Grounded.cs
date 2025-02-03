@@ -12,7 +12,6 @@ namespace GameNext.GameNext.Code.SM.Gameplay.PC
 
         private readonly List<GroundedModuleCommands> _commandsList = new();
         
-        
         public override void Init(MonoBehaviour core)
         {
             base.Init(core);
@@ -21,6 +20,8 @@ namespace GameNext.GameNext.Code.SM.Gameplay.PC
             {
                 x.Init(_frameStats, _core.frameData, _core.frameInput);
             });
+            _stats.acceleration = _stats.maxSpeed;
+            // _stats.deceleration = _stats.maxSpeed / 2f;
         }
         
         protected override void OnEnter()
@@ -51,6 +52,7 @@ namespace GameNext.GameNext.Code.SM.Gameplay.PC
         
         public void HandleInnerForce()
         {
+            
             // X-Axis
             
             if (_core.frameInput.move.x == 0)
@@ -59,6 +61,10 @@ namespace GameNext.GameNext.Code.SM.Gameplay.PC
                 {
                     _core.frameData.frameForce.x += -Mathf.Sign(_core.frameData.pastVelocity.x) * _frameStats.deceleration;
                 }
+                else
+                {
+                    _core.NullifyVelocity(x: true);
+                }
             }
             else
             {
@@ -66,6 +72,7 @@ namespace GameNext.GameNext.Code.SM.Gameplay.PC
                 {
                     if (Mathf.Abs(_core.frameData.pastVelocity.x) < _frameStats.maxSpeed)
                     {
+                        Debug.Log(_frameStats.acceleration);
                         _core.frameData.frameForce.x += _core.frameInput.move.x * _frameStats.acceleration;
                     }
                 }

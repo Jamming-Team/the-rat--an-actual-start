@@ -1,3 +1,5 @@
+using UnityEngine;
+
 namespace GameNext
 {
     public class MCStatsData
@@ -29,8 +31,12 @@ namespace GameNext
         [System.Serializable]
         public class Grounded
         {
+            [HideInInspector]
             public float acceleration = 3f;
+            // public AnimationCurve accelerationCurve;
             public float deceleration = 6f;
+            // public AnimationCurve decelerationCurve; // Curve to control deceleration strength
+            public float timeTillMaxSpeed = 1f;
             public float maxSpeed = 6f;
             public float stopThreshold = 0.1f;
 
