@@ -61,5 +61,25 @@ public static class GC
             public const string PLAY_BUTTON = "PlayButton";
         }
     }
+
+    public static class MC
+    {
+        public enum Conditions
+        {
+            HasJumpToConsume,
+            AntiInputX,
+
+            ShouldJumpGrounded,
+            ShouldJumpInAir,
+            CoyoteUsable,
+            
+        }
+
+        public enum Markers
+        {
+            TimeJumpWasPressed,
+            TimeLeftGround,
+        }
+    }
     
 }
