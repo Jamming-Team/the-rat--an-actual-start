@@ -20,7 +20,7 @@ namespace GameNext.GameNext.Code.SM.Gameplay.PC
             {
                 x.Init(_frameStats, _core.frameData, _core.frameInput);
             });
-            _stats.acceleration = _stats.maxSpeed;
+            _stats.xMovement.acceleration = _stats.xMovement.maxSpeed;
             // _stats.deceleration = _stats.maxSpeed / 2f;
         }
         
@@ -57,9 +57,9 @@ namespace GameNext.GameNext.Code.SM.Gameplay.PC
             
             if (_core.frameInput.move.x == 0)
             {
-                if (Mathf.Abs(_core.frameData.pastVelocity.x) >= _frameStats.stopThreshold)
+                if (Mathf.Abs(_core.frameData.pastVelocity.x) >= _frameStats.xMovement.stopThreshold)
                 {
-                    _core.frameData.frameForce.x += -Mathf.Sign(_core.frameData.pastVelocity.x) * _frameStats.deceleration;
+                    _core.frameData.frameForce.x += -Mathf.Sign(_core.frameData.pastVelocity.x) * _frameStats.xMovement.deceleration;
                 }
                 else
                 {
@@ -70,23 +70,23 @@ namespace GameNext.GameNext.Code.SM.Gameplay.PC
             {
                 if (!_core.conditions[Conditions.AntiInputX])
                 {
-                    if (Mathf.Abs(_core.frameData.pastVelocity.x) < _frameStats.maxSpeed)
+                    if (Mathf.Abs(_core.frameData.pastVelocity.x) < _frameStats.xMovement.maxSpeed)
                     {
-                        Debug.Log(_frameStats.acceleration);
-                        _core.frameData.frameForce.x += _core.frameInput.move.x * _frameStats.acceleration;
+                        Debug.Log(_frameStats.xMovement.acceleration);
+                        _core.frameData.frameForce.x += _core.frameInput.move.x * _frameStats.xMovement.acceleration;
                     }
                 }
                 else
                 {
-                    _core.frameData.frameForce.x += -Mathf.Sign(_core.frameData.pastVelocity.x) * _frameStats.deceleration;
-                    _core.frameData.frameForce.x += _core.frameInput.move.x * _frameStats.acceleration;
+                    _core.frameData.frameForce.x += -Mathf.Sign(_core.frameData.pastVelocity.x) * _frameStats.xMovement.deceleration;
+                    _core.frameData.frameForce.x += _core.frameInput.move.x * _frameStats.xMovement.acceleration;
                 }
 
             }
             
             // Y-Axis
             
-            _core.frameData.frameForce.y += -_frameStats.gravity;
+            _core.frameData.frameForce.y += -_frameStats.gravity.value;
 
             if (_core.conditions[Conditions.ShouldJumpGrounded])
                 ExecuteJump();

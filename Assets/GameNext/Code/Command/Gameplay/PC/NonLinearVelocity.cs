@@ -1,14 +1,12 @@
+using EditorAttributes;
 using UnityEngine;
 using UnityEngine.Serialization;
 
 namespace GameNext
 {
-    public class NonLinearVelocity : GroundedModuleCommands
+    public class NonLinearVelocity : MCModuleCommand<MCStatsData.XMovement>
     {
-        [SerializeField]
-        private float _timeTillFullVelocity = 1f;
-
-        private float k => Mathf.Pow(_timeTillFullVelocity, -1);
+        private MCStatsData.NonLinearXAcceleration xAcceleration;
 
         private float _time = 0f;
         private float _factorR = 0f;
@@ -25,18 +23,18 @@ namespace GameNext
                     _factorL = _factorR = _factor = 0f;
                     break;
                 case < 0:
-                    _factor = _factorL = Mathf.Clamp(_factorL + Time.fixedDeltaTime / _timeTillFullVelocity, 0f, 1f);
+                    _factor = _factorL = Mathf.Clamp(_factorL + Time.fixedDeltaTime / xAcceleration.timeTillFullVelocity, 0f, 1f);
                     _factorR =  Mathf.InverseLerp(0f, _stats.maxSpeed, _frameData.pastVelocity.x);
                     break;
                 case > 0:
                     _factorL = Mathf.InverseLerp(0f, -_stats.maxSpeed, _frameData.pastVelocity.x);
-                    _factor = _factorR =  Mathf.Clamp(_factorR + Time.fixedDeltaTime / _timeTillFullVelocity, 0f, 1f);
+                    _factor = _factorR =  Mathf.Clamp(_factorR + Time.fixedDeltaTime / xAcceleration.timeTillFullVelocity, 0f, 1f);
                     break;
             }
 
-            _factor *= _timeTillFullVelocity;
+            _factor *= xAcceleration.timeTillFullVelocity;
             // _stats.acceleration *= EasingLib.DerEaseOutQuad(_factor, k);
-            _stats.acceleration *= 1 / _timeTillFullVelocity;
+            _stats.acceleration *= 1 / xAcceleration.timeTillFullVelocity;
 
             
             //

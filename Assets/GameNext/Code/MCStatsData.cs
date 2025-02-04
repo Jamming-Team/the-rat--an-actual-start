@@ -1,4 +1,8 @@
+using System.Globalization;
+using EditorAttributes;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace GameNext
 {
@@ -6,92 +10,103 @@ namespace GameNext
     {
         // Parts
 
-        public interface IXMovement 
-        {
-            public float acceleration { get; set; }
-            public float deceleration { get; set; }
-            public float maxSpeed { get; set; }
-            public float stopThreshold { get; set; }
-        }
-        
-        public interface IGravity
-        {
-            public float gravity { get; set; }
-        }
-        
-        public interface ICopyable<in T_CopyType>
-        {
-            public void Copy(T_CopyType copyObject);
-        }
-        
-        public interface IXMovementXGravity : IXMovement, IGravity { }
-
-        // States
-        
         [System.Serializable]
-        public class Grounded
+        public class XMovement : ICopyable<XMovement>
         {
-            [HideInInspector]
-            public float acceleration = 3f;
-            // public AnimationCurve accelerationCurve;
-            public float deceleration = 6f;
-            // public AnimationCurve decelerationCurve; // Curve to control deceleration strength
-            public float timeTillMaxSpeed = 1f;
+            [HelpBox(nameof(timeToMaxSpeed), MessageMode.None, StringInputMode.Dynamic)]
+            public float acceleration = 6f;
+            public float deceleration = 12f;
             public float maxSpeed = 6f;
             public float stopThreshold = 0.1f;
-
-            public float gravity = 9.81f;
-
-
-            public void Copy(Grounded copyObject)
+            
+            [HideInInspector]
+            public string timeToMaxSpeed = "default_text";
+            
+            public void Copy(XMovement copyObject)
             {
                 acceleration = copyObject.acceleration;
                 deceleration = copyObject.deceleration;
                 maxSpeed = copyObject.maxSpeed;
+            }
+        }
+        
+        [System.Serializable]
+        public class Gravity
+        {
+            public float value = 9.81f;
+            public float maxFallSpeed = 6f;
+        }
+        
+        interface ICopyable<in T_CopyType>
+        {
+            public void Copy(T_CopyType copyObject);
+        }
+        
+
+        // States
+        
+        [System.Serializable]
+        public class Grounded : ICopyable<Grounded>
+        {
+            public XMovement xMovement = new XMovement
+            {
+                acceleration = 6f,
+                deceleration = 12f,
+                maxSpeed = 6f,
+                stopThreshold = 0.1f,
+            };
+
+            public Gravity gravity = new Gravity
+            {
+                value = 9.81f,
+                maxFallSpeed = 6f,
+            };
+            
+
+            public void Copy(Grounded copyObject)
+            {
+                xMovement = copyObject.xMovement;
                 gravity = copyObject.gravity;
             }
         }
         
         [System.Serializable]
-        public class InAir
+        public class InAir : ICopyable<InAir>
         {
-            public float acceleration = 2f;
-            public float deceleration = 4f;
-            public float maxSpeed = 6f;
-            public float stopThreshold = 0.1f;
+            public XMovement xMovement = new XMovement
+            {
+                acceleration = 3f,
+                deceleration = 3f,
+                maxSpeed = 6f,
+                stopThreshold = 0.1f,
+            };
 
-            public float gravity = 9.81f;
-            public float maxFallSpeed = 6f;
+            public Gravity gravity = new Gravity
+            {
+                value = 9.81f,
+                maxFallSpeed = 9f,
+            };
             
             
             public void Copy(InAir copyObject)
             {
-                acceleration = copyObject.acceleration;
-                deceleration = copyObject.deceleration;
-                maxSpeed = copyObject.maxSpeed;
+                xMovement = copyObject.xMovement;
                 gravity = copyObject.gravity;
-                maxFallSpeed = copyObject.maxFallSpeed;
             }
         }
         
         // Modules
 
         [System.Serializable]
-        public class CoyoteTime
-        {
-            public float time = 0.3f;
-        }
-        
-        [System.Serializable]
-        public class JumpBuffer
-        {
-            public float time = 0.3f;
-        }
-
-        [System.Serializable]
         public class NonParabolicJump
         {
             public float lowGravityModifier = 0.6f;
+        }
+        
+        [System.Serializable]
+        public class NonLinearXAcceleration
+        {
+            public float timeTillFullVelocity = 0.6f;
         }
         
         // Other

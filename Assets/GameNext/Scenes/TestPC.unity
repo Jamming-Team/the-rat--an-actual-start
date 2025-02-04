@@ -2444,7 +2444,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b539979090f24f32860236ce506f0553, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _timeTillFullAcceleration: 1
+  _timeTillFullVelocity: 3
 --- !u!1 &2065064128
 GameObject:
   m_ObjectHideFlags: 0

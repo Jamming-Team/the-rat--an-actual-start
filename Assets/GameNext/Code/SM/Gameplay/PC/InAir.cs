@@ -38,31 +38,31 @@ namespace GameNext.GameNext.Code.SM.Gameplay.PC
         
         public void HandleInnerForce()
         {
-            _frameStats.deceleration *= Mathf.InverseLerp(Mathf.Abs(_stats.maxSpeed), 0, Mathf.Abs(_core.frameData.pastVelocity.x));
+            _frameStats.xMovement.deceleration *= Mathf.InverseLerp(Mathf.Abs(_stats.xMovement.maxSpeed), 0, Mathf.Abs(_core.frameData.pastVelocity.x));
             if (_core.frameInput.move.x == 0)
             {
-                if (Mathf.Abs(_core.frameData.pastVelocity.x) >= _frameStats.stopThreshold)
-                    _core.frameData.frameForce.x += -Mathf.Sign(_core.frameData.pastVelocity.x) * _frameStats.deceleration;
+                if (Mathf.Abs(_core.frameData.pastVelocity.x) >= _frameStats.xMovement.stopThreshold)
+                    _core.frameData.frameForce.x += -Mathf.Sign(_core.frameData.pastVelocity.x) * _frameStats.xMovement.deceleration;
             }
             else
             {
                 if (!_core.conditions[Conditions.AntiInputX])
                 {
-                    if (Mathf.Abs(_core.frameData.pastVelocity.x) < _frameStats.maxSpeed)
+                    if (Mathf.Abs(_core.frameData.pastVelocity.x) < _frameStats.xMovement.maxSpeed)
                     {
-                        _core.frameData.frameForce.x += _core.frameInput.move.x * _frameStats.acceleration;
+                        _core.frameData.frameForce.x += _core.frameInput.move.x * _frameStats.xMovement.acceleration;
                     }
                 }
                 else
                 {
-                    _core.frameData.frameForce.x += -Mathf.Sign(_core.frameData.pastVelocity.x) * _frameStats.deceleration;
-                    _core.frameData.frameForce.x += _core.frameInput.move.x * _frameStats.acceleration;
+                    _core.frameData.frameForce.x += -Mathf.Sign(_core.frameData.pastVelocity.x) * _frameStats.xMovement.deceleration;
+                    _core.frameData.frameForce.x += _core.frameInput.move.x * _frameStats.xMovement.acceleration;
                 }
 
             }
             
-            if (_core.frameData.pastVelocity.y >= -_frameStats.maxFallSpeed)
-                _core.frameData.frameForce.y += -_frameStats.gravity;
+            if (_core.frameData.pastVelocity.y >= -_frameStats.gravity.maxFallSpeed)
+                _core.frameData.frameForce.y += -_frameStats.gravity.value;
             
             if (_core.conditions[Conditions.ShouldJumpInAir])
                 ExecuteJump();
