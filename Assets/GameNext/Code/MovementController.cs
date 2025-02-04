@@ -1,13 +1,17 @@
 using System;
 using System.Collections.Generic;
+using GameNext.GameNext.Code;
 using UnityEngine;
 using static GC.MC;
 
 namespace GameNext
 {
     [RequireComponent(typeof(Collider2D)), RequireComponent(typeof(StateMachine))]
-    public class MovementController : MonoBehaviour
+    public class MovementController : MonoBehaviour, IVisitableMC<MCStatsData.JumpData>
     {
+        [SerializeField] 
+        private MCDataFillerVisitor _dataFillerVisitor;
+        
         [SerializeField] 
         private CollisionsGatherer _collisionsGatherer;
 
@@ -45,6 +49,9 @@ namespace GameNext
         public void Init(Rigidbody2D rb)
         {
             _rb = rb;
+            
+            _dataFillerVisitor.FillAllTheData();
+            
             _sm.Init(this);
         }
 
@@ -137,6 +144,16 @@ namespace GameNext
             public bool cellingHit;
             public bool leftHit;
             public bool rightHit;
+        }
+
+        public void FillData(MCStatsData.JumpData data)
+        {
+            jumpData = data;
+        }
+
+        public void Accept(IVisitor visitor)
+        {
+            visitor.Visit(this);
         }
     }
 }

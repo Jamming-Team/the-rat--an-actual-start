@@ -20,7 +20,7 @@ MonoBehaviour:
       collisionDetectionDistance: 0.1
     grounded:
       XtotalStopThreshold: 0.2
-      groundAcceleration: 6
+      groundAcceleration: 7.5
       maxGroundSpeed: 6
       groundDeceleration: 12
       jumpForce: 10

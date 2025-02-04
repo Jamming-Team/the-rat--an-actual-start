@@ -5,7 +5,7 @@ using static GC.MC;
 
 namespace GameNext.GameNext.Code.SM.Gameplay.PC
 {
-    public class InAir : StateBase<MovementController>, IPC_States
+    public class InAir : StateBase<MovementController>, IPC_States, IVisitableMC<MCStatsData.InAir>
     {
         [SerializeField]
         private MCStatsData.InAir _stats = new();
@@ -77,6 +77,16 @@ namespace GameNext.GameNext.Code.SM.Gameplay.PC
             _core.conditions[Conditions.HasJumpToConsume] = false;
             _core.conditions[Conditions.CoyoteUsable] = false;
             _core.markers[Markers.TimeJumpWasPressed] = float.MinValue;
+        }
+
+        public void FillData(MCStatsData.InAir data)
+        {
+            _stats = data;
+        }
+
+        public void Accept(IVisitor visitor)
+        {
+            visitor.Visit(this);
         }
     }
 }

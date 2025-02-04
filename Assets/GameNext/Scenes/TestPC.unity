@@ -218,6 +218,7 @@ GameObject:
   - component: {fileID: 146670596}
   - component: {fileID: 146670598}
   - component: {fileID: 146670597}
+  - component: {fileID: 146670599}
   m_Layer: 0
   m_Name: MovementController
   m_TagString: Untagged
@@ -290,6 +291,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e207a62ae0e400086cc6573a18071f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _dataFillerVisitor: {fileID: 146670599}
   _collisionsGatherer: {fileID: 1700354201}
   jumpData:
     jumpForce: 5
@@ -307,6 +309,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb04946fc63221890927d415aa939ec5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &146670599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 146670593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fa2c052938b4505bbc26343ad0a08d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _statsSO: {fileID: 11400000, guid: a61c1c8dae4094576aab2211ebd1bddd, type: 2}
 --- !u!1 &182520916
 GameObject:
   m_ObjectHideFlags: 0
@@ -1038,12 +1053,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _stats:
-    acceleration: 2
-    deceleration: 4
-    maxSpeed: 6
-    stopThreshold: 0.1
-    gravity: 9.81
-    maxFallSpeed: 6
+    xMovement:
+      acceleration: 3
+      deceleration: 3
+      maxSpeed: 6
+      stopThreshold: 0.1
+      timeToMaxSpeed: default_text
+    gravity:
+      value: 9.81
+      maxFallSpeed: 9
 --- !u!1 &858582004
 GameObject:
   m_ObjectHideFlags: 0
@@ -1416,8 +1434,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1981979489}
+  m_Children: []
   m_Father: {fileID: 146670594}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1212332806
@@ -1433,12 +1450,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _stats:
-    acceleration: 3
-    deceleration: 18
-    timeTillMaxSpeed: 1
-    maxSpeed: 6
-    stopThreshold: 0.1
-    gravity: 9.81
+    xMovement:
+      acceleration: 6
+      deceleration: 12
+      maxSpeed: 6
+      stopThreshold: 0.1
+      timeToMaxSpeed: default_text
+    gravity:
+      value: 9.81
+      maxFallSpeed: 6
 --- !u!1 &1459064036
 GameObject:
   m_ObjectHideFlags: 0
@@ -2400,51 +2420,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1047431763}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1981979488
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1981979489}
-  - component: {fileID: 1981979490}
-  m_Layer: 0
-  m_Name: NonLinearAcceleration
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1981979489
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1981979488}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1212332805}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1981979490
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1981979488}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b539979090f24f32860236ce506f0553, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _timeTillFullVelocity: 3
 --- !u!1 &2065064128
 GameObject:
   m_ObjectHideFlags: 0

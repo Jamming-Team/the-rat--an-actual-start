@@ -4,10 +4,10 @@ using static GC.MC;
 
 namespace GameNext.GameNext.Code.SM.Gameplay.PC
 {
-    public class Grounded : StateBase<MovementController>, IPC_States
+    public class Grounded : StateBase<MovementController>, IPC_States, IVisitableMC<MCStatsData.Grounded>
     {
         [SerializeField] 
-        private MCStatsData.Grounded _stats = new();
+        private MCStatsData.Grounded _stats;
         private readonly MCStatsData.Grounded _frameStats = new();
 
         private readonly List<GroundedModuleCommands> _commandsList = new();
@@ -20,7 +20,7 @@ namespace GameNext.GameNext.Code.SM.Gameplay.PC
             {
                 x.Init(_frameStats, _core.frameData, _core.frameInput);
             });
-            _stats.xMovement.acceleration = _stats.xMovement.maxSpeed;
+            // _stats.xMovement.acceleration = _stats.xMovement.maxSpeed;
             // _stats.deceleration = _stats.maxSpeed / 2f;
         }
         
@@ -102,6 +102,15 @@ namespace GameNext.GameNext.Code.SM.Gameplay.PC
             _core.conditions[Conditions.CoyoteUsable] = false;
             _core.markers[Markers.TimeJumpWasPressed] = float.MinValue;
         }
-        
+
+        public void Accept(IVisitor visitor)
+        {
+            visitor.Visit(this);
+        }
+
+        public void FillData(MCStatsData.Grounded data)
+        {
+            _stats = data;
+        }
     }
 }

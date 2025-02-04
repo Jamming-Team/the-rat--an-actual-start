@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace GameNext
 {
-    public class NonParabolicJump : MCModuleCommand<MCStatsData.Gravity>
+    public class NonParabolicJump : MCModuleCommand<MCStatsData.Gravity>, IVisitableMC<MCStatsData.NonParabolicJump>
     {
         [SerializeField] private MCStatsData.NonParabolicJump _data;
         
@@ -12,6 +12,16 @@ namespace GameNext
             {
                 _stats.value *= _data.lowGravityModifier;
             }
+        }
+        
+        public void FillData(MCStatsData.NonParabolicJump data)
+        {
+            _data = data;
+        }
+
+        public void Accept(IVisitor visitor)
+        {
+            visitor.Visit(this);
         }
     }
 }
