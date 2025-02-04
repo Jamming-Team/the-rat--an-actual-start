@@ -36,7 +36,7 @@ MonoBehaviour:
       maxFallSpeed: 9
   nonParabolicJump:
     lowGravityModifier: 1.2
-    highGravityModifier: 1.6
+    highGravityModifier: 2
   variableJumpHeight:
     antiJumpBurstModifier: 0.7
   apexModifiers:
