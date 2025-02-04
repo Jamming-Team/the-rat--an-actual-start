@@ -12,6 +12,10 @@ namespace GameNext
             {
                 _stats.gravity.value *= _data.lowGravityModifier;
             }
+            else
+            {
+                _stats.gravity.value *= _data.highGravityModifier;
+            }
         }
         
         public void FillData(MCStatsData.NonParabolicJump data)

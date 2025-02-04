@@ -16,7 +16,7 @@ namespace GameNext
         private CollisionsGatherer _collisionsGatherer;
 
         [SerializeField]
-        public MCStatsData.JumpData jumpData = new MCStatsData.JumpData();
+        public MCStatsData.JumpData jumpData;
         
         [HideInInspector]
         public FrameData frameData { get; private set; } = new FrameData();

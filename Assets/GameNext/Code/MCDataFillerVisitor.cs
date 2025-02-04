@@ -61,5 +61,15 @@ namespace GameNext.GameNext.Code
             variableJumpHeight.FillData(_statsSO.variableJumpHeight);
         }
         
+        public void Visit(ApexModifiers apexModifiers)
+        {
+            apexModifiers.FillData(_statsSO.apexModifiers);
+        }
+        
+        public void Visit(MovementController movementController)
+        {
+            movementController.FillData(_statsSO.jump);
+        }
+        
     }
 }

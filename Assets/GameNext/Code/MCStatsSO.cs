@@ -14,9 +14,10 @@ namespace GameNext
         [Title("Modules", drawLine: true)]
         public MCStatsData.NonParabolicJump nonParabolicJump = new();
         public MCStatsData.VariableJumpHeight variableJumpHeight = new();
+        public MCStatsData.ApexModifiers apexModifiers = new();
         
-        public MCStatsData.NonLinearXAcceleration nonLinearXAccelerationGrounded = new();
-        public MCStatsData.NonLinearXAcceleration nonLinearXAccelerationInAir = new();
+        // public MCStatsData.NonLinearXAcceleration nonLinearXAccelerationGrounded = new();
+        // public MCStatsData.NonLinearXAcceleration nonLinearXAccelerationInAir = new();
 
         
         [Title("Other", drawLine: true)]

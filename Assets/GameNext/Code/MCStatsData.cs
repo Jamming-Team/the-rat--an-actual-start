@@ -27,6 +27,7 @@ namespace GameNext
                 acceleration = copyObject.acceleration;
                 deceleration = copyObject.deceleration;
                 maxSpeed = copyObject.maxSpeed;
+                stopThreshold = copyObject.stopThreshold;
             }
         }
         
@@ -107,6 +108,7 @@ namespace GameNext
         public class NonParabolicJump
         {
             public float lowGravityModifier = 0.6f;
+            public float highGravityModifier = 1.6f;
         }
         
         [System.Serializable]
@@ -119,6 +121,14 @@ namespace GameNext
         public class VariableJumpHeight
         {
             public float antiJumpBurstModifier = 0.6f;
+        }
+        
+        [System.Serializable]
+        public class ApexModifiers
+        {
+            public float threshold = 2f;
+            public float xAccelerationBonus = 2f;
+            public float minGravityModifier = 0.3f;
         }
         
         // Other
