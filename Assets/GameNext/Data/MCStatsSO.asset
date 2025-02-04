@@ -16,34 +16,34 @@ MonoBehaviour:
     xMovement:
       acceleration: 22.73
       deceleration: 18
-      maxSpeed: 6
+      maxSpeed: 8
       stopThreshold: 0.2
       timeToMaxSpeed: "\u0424\u0443\u043B \u0440\u0430\u0437\u0433\u043E\u043D \u0437\u0430:
-        0.2639683"
+        0.3519578"
     gravity:
       value: 9.81
       maxFallSpeed: 6
   inAir:
     xMovement:
-      acceleration: 8
+      acceleration: 12
       deceleration: 10
-      maxSpeed: 6
+      maxSpeed: 8
       stopThreshold: 0.1
       timeToMaxSpeed: "\u0424\u0443\u043B \u0440\u0430\u0437\u0433\u043E\u043D \u0437\u0430:
-        0.75"
+        0.6666667"
     gravity:
       value: 9.81
       maxFallSpeed: 9
   nonParabolicJump:
-    lowGravityModifier: 0.8
+    lowGravityModifier: 1.2
     highGravityModifier: 1.6
   variableJumpHeight:
-    antiJumpBurstModifier: 0.5
+    antiJumpBurstModifier: 0.7
   apexModifiers:
     threshold: 2
-    xAccelerationBonus: 20
+    xAccelerationBonus: 10
     minGravityModifier: 0.7
   jump:
-    jumpForce: 8
+    jumpForce: 6
     jumpBufferTime: 0.3
     coyoteTime: 0.3

@@ -1531,7 +1531,7 @@ GameObject:
   - component: {fileID: 1459064037}
   - component: {fileID: 1459064039}
   - component: {fileID: 1459064038}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Platform (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2137,7 +2137,7 @@ GameObject:
   - component: {fileID: 1749100448}
   - component: {fileID: 1749100447}
   - component: {fileID: 1749100449}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: RefMeter (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
