@@ -6,7 +6,7 @@ using static GC.MC;
 
 namespace GameNext
 {
-    [RequireComponent(typeof(Collider2D)), RequireComponent(typeof(StateMachine))]
+    [RequireComponent(typeof(StateMachine))]
     public class MovementController : MonoBehaviour, IVisitableMC<MCStatsData.JumpData>
     {
         [SerializeField] 
@@ -28,12 +28,10 @@ namespace GameNext
         public Dictionary<Markers, float> markers { get; private set; } = new Dictionary<Markers, float>();
 
         private Rigidbody2D _rb;
-        private Collider2D _col;
         private StateMachine _sm;
 
         private void Awake()
         {
-            _col = GetComponent<Collider2D>();
             _sm = GetComponent<StateMachine>();
             
             foreach (Conditions condition in Enum.GetValues(typeof(Conditions)))
@@ -59,7 +57,7 @@ namespace GameNext
         {
             frameData.Refresh(_rb);
             
-            _collisionsGatherer.Gather(_col, frameCollisions);
+            _collisionsGatherer.Gather(frameCollisions);
             
             
             (_sm.currentState as IPC_States)?.HandleTransition();
@@ -76,6 +74,8 @@ namespace GameNext
 
         private void GatherInput()
         {
+            conditions[Conditions.HasJumpToConsume] = false;
+            
             frameInput.jumpDown = Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.C);
             frameInput.jumpHeld = Input.GetButton("Jump") || Input.GetKey(KeyCode.C);
             frameInput.move = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
@@ -98,6 +98,9 @@ namespace GameNext
         
         private void ApplyForce()
         {
+            frameData.frameForce *= _rb.mass;
+            frameData.frameBurst *= _rb.mass;
+            
             if (frameData.frameForce != Vector2.zero)
                 _rb.AddForce(frameData.frameForce, ForceMode2D.Force);
             if (frameData.frameBurst != Vector2.zero)
