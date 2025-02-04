@@ -18,7 +18,7 @@ namespace GameNext.GameNext.Code.SM.Gameplay.PC
             GetComponentsInChildren(_commandsList);
             _commandsList.ForEach(x =>
             {
-                x.Init(_frameStats, _core.frameData, _core.frameInput);
+                x.Init(_frameStats, _core);
             });
             // _stats.xMovement.acceleration = _stats.xMovement.maxSpeed;
             // _stats.deceleration = _stats.maxSpeed / 2f;
@@ -72,7 +72,7 @@ namespace GameNext.GameNext.Code.SM.Gameplay.PC
                 {
                     if (Mathf.Abs(_core.frameData.pastVelocity.x) < _frameStats.xMovement.maxSpeed)
                     {
-                        Debug.Log(_frameStats.xMovement.acceleration);
+                        // Debug.Log(_frameStats.xMovement.acceleration);
                         _core.frameData.frameForce.x += _core.frameInput.move.x * _frameStats.xMovement.acceleration;
                     }
                 }
@@ -87,6 +87,7 @@ namespace GameNext.GameNext.Code.SM.Gameplay.PC
             // Y-Axis
             
             _core.frameData.frameForce.y += -_frameStats.gravity.value;
+            
 
             if (_core.conditions[Conditions.ShouldJumpGrounded])
                 ExecuteJump();
@@ -101,6 +102,7 @@ namespace GameNext.GameNext.Code.SM.Gameplay.PC
             _core.conditions[Conditions.HasJumpToConsume] = false;
             _core.conditions[Conditions.CoyoteUsable] = false;
             _core.markers[Markers.TimeJumpWasPressed] = float.MinValue;
+            _core.markers[Markers.RemainingJumpPotential] = _core.jumpData.jumpForce;
         }
 
         public void Accept(IVisitor visitor)

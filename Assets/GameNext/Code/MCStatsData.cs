@@ -35,6 +35,12 @@ namespace GameNext
         {
             public float value = 9.81f;
             public float maxFallSpeed = 6f;
+            
+            public void Copy(Gravity copyObject)
+            {
+                value = copyObject.value;
+                maxFallSpeed = copyObject.maxFallSpeed;
+            }
         }
         
         interface ICopyable<in T_CopyType>
@@ -65,8 +71,8 @@ namespace GameNext
 
             public void Copy(Grounded copyObject)
             {
-                xMovement = copyObject.xMovement;
-                gravity = copyObject.gravity;
+                xMovement.Copy(copyObject.xMovement);
+                gravity.Copy(copyObject.gravity);
             }
         }
         
@@ -90,8 +96,8 @@ namespace GameNext
             
             public void Copy(InAir copyObject)
             {
-                xMovement = copyObject.xMovement;
-                gravity = copyObject.gravity;
+                xMovement.Copy(copyObject.xMovement);
+                gravity.Copy(copyObject.gravity);
             }
         }
         
@@ -107,6 +113,12 @@ namespace GameNext
         public class NonLinearXAcceleration
         {
             public float timeTillFullVelocity = 0.6f;
+        }
+        
+        [System.Serializable]
+        public class VariableJumpHeight
+        {
+            public float antiJumpBurstModifier = 0.6f;
         }
         
         // Other

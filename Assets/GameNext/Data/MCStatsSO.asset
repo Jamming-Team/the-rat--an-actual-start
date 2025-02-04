@@ -14,28 +14,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   grounded:
     xMovement:
-      acceleration: 9.91
-      deceleration: 12
+      acceleration: 22.73
+      deceleration: 18
       maxSpeed: 6
       stopThreshold: 0.1
       timeToMaxSpeed: "\u0424\u0443\u043B \u0440\u0430\u0437\u0433\u043E\u043D \u0437\u0430:
-        0.6054491"
+        0.2639683"
     gravity:
       value: 9.81
       maxFallSpeed: 6
   inAir:
     xMovement:
-      acceleration: 1.49
-      deceleration: 3
+      acceleration: 6
+      deceleration: 0
       maxSpeed: 6
       stopThreshold: 0.1
       timeToMaxSpeed: "\u0424\u0443\u043B \u0440\u0430\u0437\u0433\u043E\u043D \u0437\u0430:
-        4.026845"
+        1"
     gravity:
       value: 9.81
       maxFallSpeed: 9
   nonParabolicJump:
-    lowGravityModifier: 0.6
+    lowGravityModifier: 0.5
+  variableJumpHeight:
+    antiJumpBurstModifier: 1
   nonLinearXAccelerationGrounded:
     timeTillFullVelocity: 0.6
   nonLinearXAccelerationInAir:

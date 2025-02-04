@@ -85,6 +85,7 @@ namespace GameNext
                 conditions[Conditions.HasJumpToConsume] = true;
                 markers[Markers.TimeJumpWasPressed] = frameData.time;
             }
+
             
             conditions[Conditions.AntiInputX] = Mathf.Sign(frameInput.move.x) / Mathf.Sign(frameData.pastVelocity.x) < 0;
             

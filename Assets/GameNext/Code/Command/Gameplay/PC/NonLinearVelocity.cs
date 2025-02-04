@@ -17,17 +17,17 @@ namespace GameNext
         
         public override void Execute()
         {
-            switch (_playerInput.move.x)
+            switch (_mc.frameInput.move.x)
             {
                 case 0:
                     _factorL = _factorR = _factor = 0f;
                     break;
                 case < 0:
                     _factor = _factorL = Mathf.Clamp(_factorL + Time.fixedDeltaTime / xAcceleration.timeTillFullVelocity, 0f, 1f);
-                    _factorR =  Mathf.InverseLerp(0f, _stats.maxSpeed, _frameData.pastVelocity.x);
+                    _factorR =  Mathf.InverseLerp(0f, _stats.maxSpeed, _mc.frameData.pastVelocity.x);
                     break;
                 case > 0:
-                    _factorL = Mathf.InverseLerp(0f, -_stats.maxSpeed, _frameData.pastVelocity.x);
+                    _factorL = Mathf.InverseLerp(0f, -_stats.maxSpeed, _mc.frameData.pastVelocity.x);
                     _factor = _factorR =  Mathf.Clamp(_factorR + Time.fixedDeltaTime / xAcceleration.timeTillFullVelocity, 0f, 1f);
                     break;
             }

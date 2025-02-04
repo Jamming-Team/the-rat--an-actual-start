@@ -8,7 +8,7 @@ namespace GameNext.GameNext.Code.SM.Gameplay.PC
     public class InAir : StateBase<MovementController>, IPC_States, IVisitableMC<MCStatsData.InAir>
     {
         [SerializeField]
-        private MCStatsData.InAir _stats = new();
+        private MCStatsData.InAir _stats;
         private readonly MCStatsData.InAir _frameStats = new();
         
         private readonly List<InAirModuleCommand> _commandsList = new();
@@ -20,7 +20,7 @@ namespace GameNext.GameNext.Code.SM.Gameplay.PC
             GetComponentsInChildren(_commandsList);
             _commandsList.ForEach(x =>
             {
-                x.Init(_frameStats, _core.frameData, _core.frameInput);
+                x.Init(_frameStats, _core);
             });
         }
 
@@ -38,7 +38,7 @@ namespace GameNext.GameNext.Code.SM.Gameplay.PC
         
         public void HandleInnerForce()
         {
-            _frameStats.xMovement.deceleration *= Mathf.InverseLerp(Mathf.Abs(_stats.xMovement.maxSpeed), 0, Mathf.Abs(_core.frameData.pastVelocity.x));
+            // _frameStats.xMovement.deceleration *= Mathf.InverseLerp(Mathf.Abs(_stats.xMovement.maxSpeed), 0, Mathf.Abs(_core.frameData.pastVelocity.x));
             if (_core.frameInput.move.x == 0)
             {
                 if (Mathf.Abs(_core.frameData.pastVelocity.x) >= _frameStats.xMovement.stopThreshold)
@@ -61,6 +61,8 @@ namespace GameNext.GameNext.Code.SM.Gameplay.PC
 
             }
             
+            // Y-Axis
+            
             if (_core.frameData.pastVelocity.y >= -_frameStats.gravity.maxFallSpeed)
                 _core.frameData.frameForce.y += -_frameStats.gravity.value;
             
@@ -77,6 +79,7 @@ namespace GameNext.GameNext.Code.SM.Gameplay.PC
             _core.conditions[Conditions.HasJumpToConsume] = false;
             _core.conditions[Conditions.CoyoteUsable] = false;
             _core.markers[Markers.TimeJumpWasPressed] = float.MinValue;
+            _core.markers[Markers.RemainingJumpPotential] = _core.jumpData.jumpForce;
         }
 
         public void FillData(MCStatsData.InAir data)

@@ -72,6 +72,7 @@ public static class GC
             ShouldJumpGrounded,
             ShouldJumpInAir,
             CoyoteUsable,
+            // EndedJumpEarly,
             
         }
 
@@ -79,6 +80,7 @@ public static class GC
         {
             TimeJumpWasPressed,
             TimeLeftGround,
+            RemainingJumpPotential,
         }
     }
     

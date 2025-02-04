@@ -56,5 +56,10 @@ namespace GameNext.GameNext.Code
             nonParabolicJump.FillData(_statsSO.nonParabolicJump);
         }
         
+        public void Visit(VariableJumpHeight variableJumpHeight)
+        {
+            variableJumpHeight.FillData(_statsSO.variableJumpHeight);
+        }
+        
     }
 }
