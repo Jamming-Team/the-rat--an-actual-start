@@ -57,7 +57,7 @@ namespace MeatAndSoap
             frameData.Refresh(_rb);
             
             _collisionsGatherer.Gather(frameCollisions);
-            
+            HandleInput();
             
             (_sm.currentState as IPC_States)?.HandleTransition();
             (_sm.currentState as IPC_States)?.HandleModules();
@@ -68,16 +68,12 @@ namespace MeatAndSoap
         
         private void Update()
         {
-            GatherInput();
+            HandleInput();
         }
 
-        private void GatherInput()
+        private void HandleInput()
         {
             conditions[Conditions.HasJumpToConsume] = false;
-            
-            frameInput.jumpDown = Input.GetButtonDown("Jump") || Input.GetKeyDown(KeyCode.C);
-            frameInput.jumpHeld = Input.GetButton("Jump") || Input.GetKey(KeyCode.C);
-            frameInput.move = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
             
             if (frameInput.jumpDown)
             {
@@ -105,6 +101,13 @@ namespace MeatAndSoap
                 _rb.AddForce(frameData.frameForce, ForceMode2D.Force);
             if (frameData.frameBurst != Vector2.zero)
                 _rb.AddForce(frameData.frameBurst, ForceMode2D.Impulse);
+        }
+
+        public void SupplyInput(Vector2 move, bool jumpPerformed, bool jumpInProgress)
+        {
+            frameInput.move = move;
+            frameInput.jumpDown = jumpPerformed;
+            frameInput.jumpHeld = jumpInProgress;
         }
         
         public void NullifyVelocity(bool x = false, bool y = false)

@@ -209,6 +209,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec78edfd7c904990a47ad72c8050196a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _inputReader: {fileID: 11400000, guid: bf5ca6179c13a5c5a906d29308842659, type: 2}
   _movementController: {fileID: 5517515510865946901}
 --- !u!1 &5368819222156260913
 GameObject:
