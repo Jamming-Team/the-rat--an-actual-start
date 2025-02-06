@@ -1,10 +1,9 @@
 using System;
 using System.Collections.Generic;
-using GameNext.GameNext.Code;
 using UnityEngine;
 using static GC.MC;
 
-namespace GameNext
+namespace MeatAndSoap
 {
     [RequireComponent(typeof(StateMachine))]
     public class MovementController : MonoBehaviour, IVisitableMC<MCStatsData.JumpData>

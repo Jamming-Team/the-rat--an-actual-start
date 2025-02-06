@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace GameNext
+namespace MeatAndSoap
 {
     public class NonParabolicJump : InAirModuleCommand, IVisitableMC<MCStatsData.NonParabolicJump>
     {

@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace GameNext
+namespace MeatAndSoap
 {
     public interface IPC_States
     {

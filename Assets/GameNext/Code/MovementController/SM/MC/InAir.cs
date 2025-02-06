@@ -2,15 +2,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using static GC.MC;
 
-namespace GameNext.GameNext.Code.SM.Gameplay.PC
+namespace MeatAndSoap.SM.MC
 {
-    public class Grounded : StateBase<MovementController>, IPC_States, IVisitableMC<MCStatsData.Grounded>
+    public class InAir : StateBase<MovementController>, IPC_States, IVisitableMC<MCStatsData.InAir>
     {
-        [SerializeField] 
-        private MCStatsData.Grounded _stats;
-        private readonly MCStatsData.Grounded _frameStats = new();
+        [SerializeField]
+        private MCStatsData.InAir _stats;
+        private readonly MCStatsData.InAir _frameStats = new();
+        
+        private readonly List<InAirModuleCommand> _commandsList = new();
 
-        private readonly List<GroundedModuleCommands> _commandsList = new();
         
         public override void Init(MonoBehaviour core)
         {
@@ -20,30 +21,14 @@ namespace GameNext.GameNext.Code.SM.Gameplay.PC
             {
                 x.Init(_frameStats, _core);
             });
-            // _stats.xMovement.acceleration = _stats.xMovement.maxSpeed;
-            // _stats.deceleration = _stats.maxSpeed / 2f;
-        }
-        
-        protected override void OnEnter()
-        {
-            base.OnEnter();
-            _core.conditions[Conditions.CoyoteUsable] = true;
-            // _core.conditions.bufferedJumpUsable = true;
-        }
-
-        protected override void OnExit()
-        {
-            base.OnExit();
-            _core.markers[Markers.TimeLeftGround] = _core.frameData.time;
-            // _core.conditions.bufferedJumpUsable = false;
         }
 
         public void HandleTransition()
         {
-            if (!_core.frameCollisions.groundHit)
-                RequestTransition<InAir>();
+            if (_core.frameCollisions.groundHit)
+                RequestTransition<Grounded>();
         }
-
+        
         public void HandleModules()
         {
             _frameStats.Copy(_stats);
@@ -52,19 +37,11 @@ namespace GameNext.GameNext.Code.SM.Gameplay.PC
         
         public void HandleInnerForce()
         {
-            
-            // X-Axis
-            
+            // _frameStats.xMovement.deceleration *= Mathf.InverseLerp(Mathf.Abs(_stats.xMovement.maxSpeed), 0, Mathf.Abs(_core.frameData.pastVelocity.x));
             if (_core.frameInput.move.x == 0)
             {
                 if (Mathf.Abs(_core.frameData.pastVelocity.x) >= _frameStats.xMovement.stopThreshold)
-                {
                     _core.frameData.frameForce.x += -Mathf.Sign(_core.frameData.pastVelocity.x) * _frameStats.xMovement.deceleration;
-                }
-                else
-                {
-                    _core.NullifyVelocity(x: true);
-                }
             }
             else
             {
@@ -72,7 +49,6 @@ namespace GameNext.GameNext.Code.SM.Gameplay.PC
                 {
                     if (Mathf.Abs(_core.frameData.pastVelocity.x) < _frameStats.xMovement.maxSpeed)
                     {
-                        // Debug.Log(_frameStats.xMovement.acceleration);
                         _core.frameData.frameForce.x += _core.frameInput.move.x * _frameStats.xMovement.acceleration;
                     }
                 }
@@ -86,13 +62,13 @@ namespace GameNext.GameNext.Code.SM.Gameplay.PC
             
             // Y-Axis
             
-            _core.frameData.frameForce.y += -_frameStats.gravity.value;
+            if (_core.frameData.pastVelocity.y >= -_frameStats.gravity.maxFallSpeed)
+                _core.frameData.frameForce.y += -_frameStats.gravity.value;
             
-
-            if (_core.conditions[Conditions.ShouldJumpGrounded])
+            if (_core.conditions[Conditions.ShouldJumpInAir])
                 ExecuteJump();
         }
-
+        
         private void ExecuteJump()
         {
             if (_core.frameData.pastVelocity.y < 0)
@@ -105,14 +81,14 @@ namespace GameNext.GameNext.Code.SM.Gameplay.PC
             _core.markers[Markers.RemainingJumpPotential] = _core.jumpData.jumpForce;
         }
 
+        public void FillData(MCStatsData.InAir data)
+        {
+            _stats = data;
+        }
+
         public void Accept(IVisitor visitor)
         {
             visitor.Visit(this);
-        }
-
-        public void FillData(MCStatsData.Grounded data)
-        {
-            _stats = data;
         }
     }
 }

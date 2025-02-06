@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace GameNext
+namespace MeatAndSoap
 {
     public class VariableJumpHeight : InAirModuleCommand, IVisitableMC<MCStatsData.VariableJumpHeight>
     {

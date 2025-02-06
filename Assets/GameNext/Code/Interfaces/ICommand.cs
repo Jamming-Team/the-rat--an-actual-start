@@ -1,4 +1,4 @@
-namespace GameNext
+namespace MeatAndSoap
 {
     public interface ICommand
     {

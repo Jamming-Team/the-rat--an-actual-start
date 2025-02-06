@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-namespace GameNext
+namespace MeatAndSoap
 {
     public class MCStatsData
     {

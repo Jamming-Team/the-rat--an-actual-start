@@ -2,7 +2,7 @@ using EditorAttributes;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-namespace GameNext
+namespace MeatAndSoap
 {
     [CreateAssetMenu(fileName = "MCStatsSO", menuName = "MeatNSoap_RFA/MCStatsSO", order = 0)]
     public class MCStatsSO : ScriptableObject

@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Reflection;
-using GameNext.GameNext.Code.SM.Gameplay.PC;
+using MeatAndSoap.SM.MC;
 using UnityEngine;
 
-namespace GameNext.GameNext.Code
+namespace MeatAndSoap
 {
     public class MCDataFillerVisitor : MonoBehaviour, IVisitor
     {

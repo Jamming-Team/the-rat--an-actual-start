@@ -2,7 +2,7 @@ using EditorAttributes;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-namespace GameNext
+namespace MeatAndSoap
 {
     public class NonLinearVelocity : MCModuleCommand<MCStatsData.XMovement>
     {

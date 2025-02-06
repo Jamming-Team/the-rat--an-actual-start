@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace GameNext
+namespace MeatAndSoap
 {
     public class StateMachine : MonoBehaviour
     {

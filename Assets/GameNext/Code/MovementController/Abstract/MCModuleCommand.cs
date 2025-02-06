@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace GameNext
+namespace MeatAndSoap
 {
     public abstract class MCModuleCommand<T> : MonoBehaviour, ICommand
     {

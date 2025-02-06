@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace GameNext
+namespace MeatAndSoap
 {
     public abstract class StateBase<T_ContextType> : MonoBehaviour, IState where T_ContextType : MonoBehaviour
     {

@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace GameNext
+namespace MeatAndSoap
 {
     public class Player : MonoBehaviour
     {
