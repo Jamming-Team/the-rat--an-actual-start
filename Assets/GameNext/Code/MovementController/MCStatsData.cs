@@ -1,5 +1,6 @@
 using System.Globalization;
-using EditorAttributes;
+// using EditorAttributes;
+using TriInspector;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -13,11 +14,20 @@ namespace MeatAndSoap
         [System.Serializable]
         public class XMovement : ICopyable<XMovement>
         {
-            [HelpBox(nameof(timeToMaxSpeed), MessageMode.None, StringInputMode.Dynamic)]
+            // [HelpBox(nameof(timeToMaxSpeed), MessageMode.None, StringInputMode.Dynamic)]
             public float acceleration = 6f;
             public float deceleration = 12f;
             public float maxSpeed = 6f;
             public float stopThreshold = 0.1f;
+
+            private float _test;
+
+            [ShowInInspector]
+            public float testProperty
+            {
+                get => _test;
+                set => _test = value;
+            }
             
             [HideInInspector]
             public string timeToMaxSpeed = "default_text";

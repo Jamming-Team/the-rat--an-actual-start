@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TriInspector;
 using UnityEngine;
 using static GC.MC;
 
@@ -11,6 +12,36 @@ namespace MeatAndSoap.SM.MC
         private readonly MCStatsData.Grounded _frameStats = new();
 
         private readonly List<GroundedModuleCommands> _commandsList = new();
+
+        [ShowInInspector]
+        public float TestProp1 { get; set; } = 2f;
+        
+        [ShowInInspector]
+        public float TestProp2 { get; set; } = 2f;
+        
+        private float _test;
+
+        [ShowInEditMode]
+        public float testProperty
+        {
+            get => _test;
+            set => _test = value;
+        }
+        
+        private float _field;
+
+        [ShowInInspector]
+        private bool _myToggle;
+
+        [ShowInInspector]
+        public float ReadOnlyProperty => _field;
+
+        [ShowInInspector]
+        public float EditableProperty
+        {
+            get => _field;
+            set => _field = value;
+        }
         
         public override void Init(MonoBehaviour core)
         {

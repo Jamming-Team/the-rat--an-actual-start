@@ -1,4 +1,3 @@
-using EditorAttributes;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -7,11 +6,11 @@ namespace MeatAndSoap
     [CreateAssetMenu(fileName = "MCStatsSO", menuName = "MeatNSoap_RFA/MCStatsSO", order = 0)]
     public class MCStatsSO : ScriptableObject
     {
-        [Title("States", drawLine: true)]
+        // [EditorAttributes.Title("States", drawLine: true)]
         public MCStatsData.Grounded grounded = new();
         public MCStatsData.InAir inAir = new();
         
-        [Title("Modules", drawLine: true)]
+        // [EditorAttributes.Title("Modules", drawLine: true)]
         public MCStatsData.NonParabolicJump nonParabolicJump = new();
         public MCStatsData.VariableJumpHeight variableJumpHeight = new();
         public MCStatsData.ApexModifiers apexModifiers = new();
@@ -20,7 +19,7 @@ namespace MeatAndSoap
         // public MCStatsData.NonLinearXAcceleration nonLinearXAccelerationInAir = new();
 
         
-        [Title("Other", drawLine: true)]
+        // [EditorAttributes.Title("Other", drawLine: true)]
         public MCStatsData.JumpData jump = new();
         
         void OnValidate()

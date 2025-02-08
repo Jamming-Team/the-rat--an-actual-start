@@ -27,4 +27,6 @@ namespace MeatAndSoap
             visitor.Visit(this);
         }
     }
+    
+    // public class EnvironmentDeceleration
 }
