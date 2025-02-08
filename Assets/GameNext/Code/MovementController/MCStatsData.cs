@@ -11,48 +11,44 @@ namespace MeatAndSoap
     {
         // Parts
 
-        [System.Serializable]
-        public class XMovement : ICopyable<XMovement>
+        public interface IXMovement
         {
             // [HelpBox(nameof(timeToMaxSpeed), MessageMode.None, StringInputMode.Dynamic)]
-            public float acceleration = 6f;
-            public float deceleration = 12f;
-            public float maxSpeed = 6f;
-            public float stopThreshold = 0.1f;
+            public float acceleration { get; set; }
+            public float deceleration { get; set; }
+            public float maxSpeed { get; set; }
+            public float stopThreshold { get; set; }
 
-            private float _test;
+            
+            // public float acceleration { get; set; } = 6f;
+            // public float deceleration = 12f;
+            // public float maxSpeed = 6f;
+            // public float stopThreshold = 0.1f;
+            //
+            // private float _test;
 
-            [ShowInInspector]
-            public float testProperty
-            {
-                get => _test;
-                set => _test = value;
-            }
+
             
-            [HideInInspector]
-            public string timeToMaxSpeed = "default_text";
+            // [HideInInspector]
+            // public string timeToMaxSpeed = "default_text";
             
-            public void Copy(XMovement copyObject)
-            {
-                acceleration = copyObject.acceleration;
-                deceleration = copyObject.deceleration;
-                maxSpeed = copyObject.maxSpeed;
-                stopThreshold = copyObject.stopThreshold;
-            }
+            // public void Copy(XMovement copyObject)
+            // {
+            //     acceleration = copyObject.acceleration;
+            //     deceleration = copyObject.deceleration;
+            //     maxSpeed = copyObject.maxSpeed;
+            //     stopThreshold = copyObject.stopThreshold;
+            // }
         }
         
-        [System.Serializable]
-        public class Gravity
+        public interface IGravity
         {
-            public float value = 9.81f;
-            public float maxFallSpeed = 6f;
+            public float gravityValue { get; set; }
+            public float maxFallSpeed { get; set; }
             
-            public void Copy(Gravity copyObject)
-            {
-                value = copyObject.value;
-                maxFallSpeed = copyObject.maxFallSpeed;
-            }
         }
+        
+        public interface IXMovement_x_Gravity : IXMovement, IGravity {}
         
         interface ICopyable<in T_CopyType>
         {
@@ -63,52 +59,63 @@ namespace MeatAndSoap
         // States
         
         [System.Serializable]
-        public class Grounded : ICopyable<Grounded>
+        public class Grounded : IXMovement_x_Gravity, ICopyable<Grounded>
         {
-            public XMovement xMovement = new XMovement
-            {
-                acceleration = 6f,
-                deceleration = 12f,
-                maxSpeed = 6f,
-                stopThreshold = 0.1f,
-            };
+            [ShowInInspector]
+            public float acceleration { get; set; } = 6f;
+            [ShowInInspector]
+            public float deceleration { get; set; } = 12f;
+            [ShowInInspector]
+            public float maxSpeed { get; set; } = 6f;
+            [ShowInInspector]
+            public float stopThreshold { get; set; } = .1f;
+            
+            [ShowInInspector]
+            public float gravityValue { get; set; } = 9.81f;
 
-            public Gravity gravity = new Gravity
-            {
-                value = 9.81f,
-                maxFallSpeed = 6f,
-            };
+            [ShowInInspector]
+            public float maxFallSpeed { get; set; } = 12f;
             
 
             public void Copy(Grounded copyObject)
             {
-                xMovement.Copy(copyObject.xMovement);
-                gravity.Copy(copyObject.gravity);
+                acceleration = copyObject.acceleration;
+                deceleration = copyObject.deceleration;
+                maxSpeed = copyObject.maxSpeed;
+                stopThreshold = copyObject.stopThreshold;
+                
+                gravityValue = copyObject.gravityValue;
+                maxFallSpeed = copyObject.maxFallSpeed;
             }
         }
         
         [System.Serializable]
-        public class InAir : ICopyable<InAir>
+        public class InAir : IXMovement_x_Gravity, ICopyable<InAir>
         {
-            public XMovement xMovement = new XMovement
-            {
-                acceleration = 3f,
-                deceleration = 3f,
-                maxSpeed = 6f,
-                stopThreshold = 0.1f,
-            };
+            [ShowInInspector]
+            public float acceleration { get; set; } = 6f;
+            [ShowInInspector]
+            public float deceleration { get; set; } = 12f;
+            [ShowInInspector]
+            public float maxSpeed { get; set; } = 6f;
+            [ShowInInspector]
+            public float stopThreshold { get; set; } = .1f;
+            
+            [ShowInInspector]
+            public float gravityValue { get; set; } = 9.81f;
+            [ShowInInspector]
+            public float maxFallSpeed { get; set; } = 12f;
+            
 
-            public Gravity gravity = new Gravity
-            {
-                value = 9.81f,
-                maxFallSpeed = 9f,
-            };
-            
-            
             public void Copy(InAir copyObject)
             {
-                xMovement.Copy(copyObject.xMovement);
-                gravity.Copy(copyObject.gravity);
+                acceleration = copyObject.acceleration;
+                deceleration = copyObject.deceleration;
+                maxSpeed = copyObject.maxSpeed;
+                stopThreshold = copyObject.stopThreshold;
+                
+                gravityValue = copyObject.gravityValue;
+                maxFallSpeed = copyObject.maxFallSpeed;
             }
         }
         

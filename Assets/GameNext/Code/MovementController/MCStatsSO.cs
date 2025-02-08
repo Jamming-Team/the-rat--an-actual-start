@@ -24,8 +24,8 @@ namespace MeatAndSoap
         
         void OnValidate()
         {
-            grounded.xMovement.timeToMaxSpeed = "Фул разгон за: " + (grounded.xMovement.maxSpeed / grounded.xMovement.acceleration).ToString();
-            inAir.xMovement.timeToMaxSpeed = "Фул разгон за: " + (inAir.xMovement.maxSpeed / inAir.xMovement.acceleration).ToString();
+        //     grounded.ixMovement.timeToMaxSpeed = "Фул разгон за: " + (grounded.ixMovement.maxSpeed / grounded.ixMovement.acceleration).ToString();
+        //     inAir.ixMovement.timeToMaxSpeed = "Фул разгон за: " + (inAir.ixMovement.maxSpeed / inAir.ixMovement.acceleration).ToString();
         }
     }
 }

@@ -12,28 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6147c6f4ec3f48f083e55eb1043cd03f, type: 3}
   m_Name: MCStatsSO
   m_EditorClassIdentifier: 
-  grounded:
-    xMovement:
-      acceleration: 22.73
-      deceleration: 18
-      maxSpeed: 8
-      stopThreshold: 0.2
-      timeToMaxSpeed: "\u0424\u0443\u043B \u0440\u0430\u0437\u0433\u043E\u043D \u0437\u0430:
-        0.3519578"
-    gravity:
-      value: 9.81
-      maxFallSpeed: 6
-  inAir:
-    xMovement:
-      acceleration: 12
-      deceleration: 10
-      maxSpeed: 8
-      stopThreshold: 0.1
-      timeToMaxSpeed: "\u0424\u0443\u043B \u0440\u0430\u0437\u0433\u043E\u043D \u0437\u0430:
-        0.6666667"
-    gravity:
-      value: 9.81
-      maxFallSpeed: 9
   nonParabolicJump:
     lowGravityModifier: 1.2
     highGravityModifier: 2

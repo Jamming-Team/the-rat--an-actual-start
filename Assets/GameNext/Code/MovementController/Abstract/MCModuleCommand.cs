@@ -2,15 +2,16 @@ using UnityEngine;
 
 namespace MeatAndSoap
 {
-    public abstract class MCModuleCommand<T> : MonoBehaviour, ICommand
+    public abstract class MCModuleCommand<T> : MonoBehaviour, ICommandMCModule
     {
         protected T _stats;
         protected MovementController _mc;
         
-        public void Init(T stats, MovementController mc)
+        
+        public void Init(IPC_States state)
         {
-            _stats = stats;
-            _mc = mc;
+            _stats = (T)state.statsRef;
+            _mc = state.coreRef;
         }
         
         public virtual void Execute() {}

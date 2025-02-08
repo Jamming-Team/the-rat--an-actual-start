@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace MeatAndSoap
 {
-    public class VariableJumpHeight : InAirModuleCommand, IVisitableMC<MCStatsData.VariableJumpHeight>
+    public class VariableJumpHeight : MCModuleCommand<MCStatsData.IGravity>, IVisitableMC<MCStatsData.VariableJumpHeight>
     {
         [SerializeField] private MCStatsData.VariableJumpHeight _data;
         
@@ -23,7 +23,7 @@ namespace MeatAndSoap
                     }
                     else
                     {
-                        _mc.markers[GC.MC.Markers.RemainingJumpPotential] += -_stats.gravity.value * Time.fixedDeltaTime;
+                        _mc.markers[GC.MC.Markers.RemainingJumpPotential] += -_stats.gravityValue * Time.fixedDeltaTime;
                     }
                 }
             }

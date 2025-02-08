@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace MeatAndSoap
 {
-    public class NonParabolicJump : InAirModuleCommand, IVisitableMC<MCStatsData.NonParabolicJump>
+    public class NonParabolicJump : MCModuleCommand<MCStatsData.IGravity>, IVisitableMC<MCStatsData.NonParabolicJump>
     {
         [SerializeField] private MCStatsData.NonParabolicJump _data;
         
@@ -10,11 +10,11 @@ namespace MeatAndSoap
         {
             if (_mc.frameData.pastVelocity.y > 0f)
             {
-                _stats.gravity.value *= _data.lowGravityModifier;
+                _stats.gravityValue *= _data.lowGravityModifier;
             }
             else
             {
-                _stats.gravity.value *= _data.highGravityModifier;
+                _stats.gravityValue *= _data.highGravityModifier;
             }
         }
         

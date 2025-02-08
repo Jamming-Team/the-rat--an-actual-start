@@ -4,7 +4,7 @@ using UnityEngine.Serialization;
 
 namespace MeatAndSoap
 {
-    public class NonLinearVelocity : MCModuleCommand<MCStatsData.XMovement>
+    public class NonLinearVelocity : MCModuleCommand<MCStatsData.IXMovement>
     {
         private MCStatsData.NonLinearXAcceleration xAcceleration;
 

@@ -10,7 +10,10 @@ namespace MeatAndSoap.SM.MC
         private MCStatsData.InAir _stats;
         private readonly MCStatsData.InAir _frameStats = new();
         
-        private readonly List<InAirModuleCommand> _commandsList = new();
+        private readonly List<ICommandMCModule> _commandsList = new();
+        
+        public object statsRef => _frameStats;
+        public MovementController coreRef => _core;
 
         
         public override void Init(MonoBehaviour core)
@@ -19,7 +22,8 @@ namespace MeatAndSoap.SM.MC
             GetComponentsInChildren(_commandsList);
             _commandsList.ForEach(x =>
             {
-                x.Init(_frameStats, _core);
+                x.Init(this);
+
             });
         }
 
@@ -40,30 +44,30 @@ namespace MeatAndSoap.SM.MC
             // _frameStats.xMovement.deceleration *= Mathf.InverseLerp(Mathf.Abs(_stats.xMovement.maxSpeed), 0, Mathf.Abs(_core.frameData.pastVelocity.x));
             if (_core.frameInput.move.x == 0)
             {
-                if (Mathf.Abs(_core.frameData.pastVelocity.x) >= _frameStats.xMovement.stopThreshold)
-                    _core.frameData.frameForce.x += -Mathf.Sign(_core.frameData.pastVelocity.x) * _frameStats.xMovement.deceleration;
+                if (Mathf.Abs(_core.frameData.pastVelocity.x) >= _frameStats.stopThreshold)
+                    _core.frameData.frameForce.x += -Mathf.Sign(_core.frameData.pastVelocity.x) * _frameStats.deceleration;
             }
             else
             {
                 if (!_core.conditions[Conditions.AntiInputX])
                 {
-                    if (Mathf.Abs(_core.frameData.pastVelocity.x) < _frameStats.xMovement.maxSpeed)
+                    if (Mathf.Abs(_core.frameData.pastVelocity.x) < _frameStats.maxSpeed)
                     {
-                        _core.frameData.frameForce.x += _core.frameInput.move.x * _frameStats.xMovement.acceleration;
+                        _core.frameData.frameForce.x += _core.frameInput.move.x * _frameStats.acceleration;
                     }
                 }
                 else
                 {
-                    _core.frameData.frameForce.x += -Mathf.Sign(_core.frameData.pastVelocity.x) * _frameStats.xMovement.deceleration;
-                    _core.frameData.frameForce.x += _core.frameInput.move.x * _frameStats.xMovement.acceleration;
+                    _core.frameData.frameForce.x += -Mathf.Sign(_core.frameData.pastVelocity.x) * _frameStats.deceleration;
+                    _core.frameData.frameForce.x += _core.frameInput.move.x * _frameStats.acceleration;
                 }
 
             }
             
             // Y-Axis
             
-            if (_core.frameData.pastVelocity.y >= -_frameStats.gravity.maxFallSpeed)
-                _core.frameData.frameForce.y += -_frameStats.gravity.value;
+            if (_core.frameData.pastVelocity.y >= -_frameStats.maxFallSpeed)
+                _core.frameData.frameForce.y += -_frameStats.gravityValue;
             
             if (_core.conditions[Conditions.ShouldJumpInAir])
                 ExecuteJump();
