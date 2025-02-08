@@ -6,7 +6,7 @@ using static GC.MC;
 namespace MeatAndSoap
 {
     [RequireComponent(typeof(StateMachine))]
-    public class MovementController : MonoBehaviour, IVisitableMC<MCStatsData.JumpData>
+    public class MovementController : MonoBehaviour, IVisitableMC<MCStatsData.JumpData>, IPushable
     {
         [SerializeField] 
         private MCDataFillerVisitor _dataFillerVisitor;
@@ -19,6 +19,7 @@ namespace MeatAndSoap
         
         [HideInInspector]
         public FrameData frameData { get; private set; } = new FrameData();
+        private Vector2 _externalBurst = Vector2.zero;
         [HideInInspector]
         public FrameInput frameInput { get; private set; } = new FrameInput();
         [HideInInspector]
@@ -94,6 +95,9 @@ namespace MeatAndSoap
         
         private void ApplyForce()
         {
+            frameData.frameBurst += _externalBurst;
+            _externalBurst = Vector2.zero;
+            
             frameData.frameForce *= _rb.mass;
             frameData.frameBurst *= _rb.mass;
             
@@ -161,6 +165,11 @@ namespace MeatAndSoap
         public void Accept(IVisitor visitor)
         {
             visitor.Visit(this);
+        }
+
+        public void Push(Vector2 pushForce)
+        {
+            _externalBurst += pushForce;
         }
     }
 }

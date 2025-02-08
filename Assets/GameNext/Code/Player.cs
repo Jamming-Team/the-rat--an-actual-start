@@ -1,5 +1,7 @@
 using System;
+using TriInspector;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace MeatAndSoap
 {
@@ -7,8 +9,11 @@ namespace MeatAndSoap
     {
         [SerializeField]
         private InputReader _inputReader;
+
+        // [ShowInInspector]
         [SerializeField]
-        private MovementController _movementController;
+        private MovementController _movementComponent;
+        public MovementController movementController => _movementComponent; 
 
         private Rigidbody2D _rigidbody2D;
         
@@ -16,14 +21,14 @@ namespace MeatAndSoap
         {
             _rigidbody2D = GetComponent<Rigidbody2D>();
             
-            _movementController.Init(_rigidbody2D);
+            movementController.Init(_rigidbody2D);
             
             _inputReader.EnablePlayerActions();
         }
 
         private void Update()
         {
-            _movementController.SupplyInput(_inputReader.move, _inputReader.jumpPerformed, _inputReader.jumpIsBeingPressed);
+            movementController.SupplyInput(_inputReader.move, _inputReader.jumpPerformed, _inputReader.jumpIsBeingPressed);
             // Debug.Log($"Move: {_inputReader.move}, jumpP: {_inputReader.jumpPerformed}, jumpInP: {_inputReader.jumpIsBeingPressed}");
         }
     }
