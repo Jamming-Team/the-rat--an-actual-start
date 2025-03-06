@@ -19,6 +19,8 @@ namespace MeatAndSoap
         
         private void Awake()
         {
+            Debug.Log(2);//
+
             _rigidbody2D = GetComponent<Rigidbody2D>();
             
             movementController.Init(_rigidbody2D);

@@ -32,6 +32,11 @@ namespace MeatAndSoap
 
         private void Awake()
         {
+            Debug.Log(1);
+        }
+
+        public void Init(Rigidbody2D rb)
+        {
             _sm = GetComponent<StateMachine>();
             
             foreach (Conditions condition in Enum.GetValues(typeof(Conditions)))
@@ -42,10 +47,7 @@ namespace MeatAndSoap
             {
                 markers[marker] = float.MinValue;
             }
-        }
-
-        public void Init(Rigidbody2D rb)
-        {
+            
             _rb = rb;
             
             _dataFillerVisitor.FillAllTheData();
